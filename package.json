@@ -1,0 +1,14 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "组件库\r * appbar\r * button\r * icon\r * form",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "haojianjiancheng",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^4.30.0"
+  }
+}
