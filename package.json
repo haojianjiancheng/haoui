@@ -9,6 +9,7 @@
   "author": "haojianjiancheng",
   "license": "ISC",
   "dependencies": {
+    "file-loader": "^3.0.1",
     "less": "^3.9.0",
     "vue": "^2.6.10"
   }
