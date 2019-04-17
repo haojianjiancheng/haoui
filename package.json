@@ -8,5 +8,7 @@
   },
   "author": "haojianjiancheng",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "vue": "^2.6.10"
+  }
 }
