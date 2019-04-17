@@ -8,7 +8,5 @@
   },
   "author": "haojianjiancheng",
   "license": "ISC",
-  "dependencies": {
-    "webpack": "^4.30.0"
-  }
+  "dependencies": {}
 }
