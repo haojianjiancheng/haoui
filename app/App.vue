@@ -1,6 +1,7 @@
 <template>
     <div id="app">
         <p>这是一段文字</p>
+        <img src="./style/img/1.jpg" alt="" srcset="">
         <appbar :onPlus="plus" :onMins="minus" :vlaue="count"></appbar>
         <test :onPlus="plus" :onMinus="minus" :vlaue="count"></test>
     </div>

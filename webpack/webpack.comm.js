@@ -53,6 +53,11 @@ const config = {
                         options : {
                             limit : 1024,
                             name : "[path][name]-[hash:8].[ext]"
+                        },
+                        loader : 'file-loader',
+                        options : {
+                            name : "[name]-[hash:8].[ext]",
+                            outputPath : 'img'
                         }
                     }
                 ]
