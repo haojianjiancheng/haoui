@@ -2,7 +2,6 @@ const path = require('path');
 const env = process.env.NODE_ENV ;
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
-
 const config = {
     mode : env,
     entry : path.join(__dirname,"../app/index.js"),
@@ -46,6 +45,18 @@ const config = {
                     "postcss-loader"
                 ]
             },
+            {
+                test : /\.(gif|jpg|jpeg|png|svg|woff|eot|ttf)$/,
+                use : [
+                    {
+                        loader : 'url-loader',
+                        options : {
+                            limit : 1024,
+                            name : "[path][name]-[hash:8].[ext]"
+                        }
+                    }
+                ]
+            }
         ]
     },
     plugins : [
