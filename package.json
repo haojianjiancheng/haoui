@@ -11,14 +11,14 @@
   "author": "haojianjiancheng",
   "license": "ISC",
   "dependencies": {
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
     "cross-env": "^5.2.0",
     "html-webpack-plugin": "^3.2.0",
-    "vue": "^2.6.10",
+    "webpack-cli": "^3.3.0",
     "webpack": "^4.30.0",
     "webpack-dev-server": "^3.3.1",
     "webpack-merge": "^4.2.1"
-  },
-  "devDependencies": {
-    "webpack-cli": "^3.3.0"
   }
 }
