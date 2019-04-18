@@ -1,5 +1,7 @@
 const path = require('path');
 const env = process.env.NODE_ENV ;
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+
 
 const config = {
     mode : env,
@@ -8,8 +10,19 @@ const config = {
         path : path.join(__dirname,"../public"),
         filename : "bundle.js"
     },
+    resolve : {
+        alias : {
+            '@' : path.join(__dirname,"../app"),
+            'vue$' : 'vue/dist/vue.esm.js'
+        },
+        extensions : [".js",".vue"]
+    },
     module : {
         rules : [
+            {
+                test : /\.vue$/,
+                loader : 'vue-loader'
+            },
             {
                 test : /\.js$/,
                 loader : 'babel-loader',
@@ -19,24 +32,24 @@ const config = {
                 )
             },
             {
-                test : /\.css$/,
+                test : /\.less/,
                 use : [
-                    "vue-style-loader",
-                    "css-loader"
+                    "css-loader",
+                    "less-loader",
+                    "postcss-loader"
                 ]
             },
             {
-                test : /\.less/,
+                test : /\.css$/,
                 use : [
-                    "vue-style-loader",
                     "css-loader",
-                    "less-loader"
+                    "postcss-loader"
                 ]
-            }
+            },
         ]
     },
     plugins : [
-        
+        new VueLoaderPlugin()
     ]
 }
 
