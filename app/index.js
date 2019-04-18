@@ -1,2 +1,8 @@
-const node = require('./text');
-document.getElementById('app').appendChild(node());
+import Vue from 'vue';
+import App from './App'
+
+new Vue ({
+    el : '#app',
+    components : { App },
+    template : `<App/>`
+})
