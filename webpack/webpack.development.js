@@ -24,7 +24,8 @@ const config = {
         port : 8080,
         compress : true,
         hot : true,
-    }
+    },
+    devtool : "eval-source-map"
 }
 
 module.exports = merge(config,common)
