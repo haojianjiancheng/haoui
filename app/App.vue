@@ -1,35 +1,25 @@
 <template>
     <div id="app">
-        <p>这是一段文字</p>
-        <img src="./style/img/1.jpg" alt="" srcset="">
-        <appbar :onPlus="plus" :onMins="minus" :vlaue="count"></appbar>
-        <test :onPlus="plus" :onMinus="minus" :vlaue="count"></test>
+        <input type="text">
+        <button @click="eject">按钮</button>
+        <alertForm v-if="show">ddd</alertForm>
     </div>
 </template>
 
 <script>
-    import appbar from '@/components/Appbar';
-    import test from './test.vue';
+    import alertForm from "./components/alertForm";
     export default {
         components : {
-            appbar,
-            test
+           alertForm
         },
         data(){
             return {
-                count : 0,
+                show : false
             }
         },
         methods : {
-            plus(){
-                console.log(this.count);
-                
-                this.count++;
-            },
-            minus(){
-                console.log(this.count);
-                
-                this.count--;
+            eject (e){
+                this.show = !this.show;
             }
         }
     }
@@ -37,6 +27,6 @@
 
 <style lang="less" scoped>
     #app{
-        background: linear-gradient(to bottom, yellow, black);
+       
     }
 </style>
