@@ -1,14 +1,14 @@
 <template>
     <div class="alert-form">
         <div class="alert-form-head">
-            <input class="alert-form-input" type="text" placeholder="姓名" @compositionend='screen($event,0)' v-model="screenValue.name">
-            <input class="alert-form-input" type="text" placeholder="编号" @input="screen($event,1)" v-model="screenValue.number">
-            <input class="alert-form-input" type="text" placeholder="成绩" @input="screen($event,2)" v-model="screenValue.result">
+            <input class="alert-form-input" type="text" placeholder="姓名" v-model="screenValue.name">
+            <input class="alert-form-input" type="text" placeholder="编号" v-model="screenValue.number">
+            <input class="alert-form-input" type="text" placeholder="成绩" v-model="screenValue.result">
         </div>
 
         <div class="alert-form-body">
             <table class="alert-form-table">
-                <tr v-for="item in filterValue" :key="item[1]">
+                <tr v-for="item in filterValue" :key="item[1]" @click="checkRow(item)">
                     <th>{{item[0]}}</th>
                     <th>{{item[1]}}</th>
                     <th>{{item[2]}}</th>
@@ -18,25 +18,31 @@
         
         <div class="alert-form-foot">
             <div class="alert-form-foot-left">
-                <button><</button>
-                <button>></button>
+                <paging :termNum="tableValue.length" :rowNum="1" :visiblePageButNum='4' @listRange='listRange'></paging>
             </div>
             <div class="alert-form-foot-right">
-                 <button>重置</button>
-                <button>搜索</button>
+                <button @click="blur">重置</button>
+                <button @click="screen">搜索</button>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import paging from './paging.vue';
     export default {
         data() {
             return {
                 tableValue : [
-                    ["张三",1010,91],
+                    ["张三",34,91],
+                    ["张三",10,91],
+                    ["张三",40,91],
                     ["李四",3003,33],
-                    ["王五",3838,38]
+                    ["王五",3838,38],
+                    ["老三",340,91],
+                    ["张饿",41,91],
+                    ["李比",31,33],
+                    ["另五",39,38],
                 ],
                 filterValue : [],
                 screenValue : {
@@ -46,23 +52,37 @@
                 }
             }
         },
-        mounted () {
-            this.filterValue = this.tableValue;
+        components : {
+            paging
+        },
+        props : {
+            rowNum : {
+                type : Number,
+                default : 5,
+                // validator : function(value){
+                //     return /[-|.]/.test(value)
+                // }
+            }
         },
         methods : {
-            screen(e,index){
-                let value = e.target.value || '';
-                let reg = new RegExp(`^${value}`)
-                this.filterValue = this.tableValue.filter(item=>reg.test(item[index]));
-                console.log(this.filterValue);
-                
+            screen(){
+                this.filterValue = this.tableValue.filter(item=>{
+                    return new RegExp(`${this.screenValue.number}`).test(item[1]) && new RegExp(this.screenValue.name).test(item[0]) && new RegExp(this.screenValue.result).test(item[2])
+                })  
             },
-            aa(){
-                console.log("汉字");
-                
+            checkRow(value){
+                this.$emit('check',value)
             },
             blur(e){
-                
+                this.screenValue = {
+                    name : '',
+                    number : '',
+                    result : ''
+                }
+                this.filterValue = this.tableValue;
+            },
+            listRange(a,b){
+                this.filterValue = this.tableValue.slice(a,b)
             }
         }
     }

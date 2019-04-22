@@ -1,8 +1,9 @@
 <template>
     <div id="app">
-        <input type="text">
+        <input type="text" v-model="value">
         <button @click="eject">按钮</button>
-        <alertForm v-if="show">ddd</alertForm>
+        <alertForm v-if="show" @check='push'></alertForm>
+        
     </div>
 </template>
 
@@ -14,13 +15,17 @@
         },
         data(){
             return {
-                show : false
+                show : false,
+                value : '',
             }
         },
         methods : {
             eject (e){
                 this.show = !this.show;
-            }
+            },
+            push(value){
+                this.value = value
+            },
         }
     }
 </script>
