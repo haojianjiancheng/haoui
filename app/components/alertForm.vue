@@ -1,9 +1,9 @@
 <template>
     <div class="alert-form">
         <div class="alert-form-head">
-            <input class="alert-form-input" type="text" placeholder="姓名" v-model="screenValue.name">
-            <input class="alert-form-input" type="text" placeholder="编号" v-model="screenValue.number">
-            <input class="alert-form-input" type="text" placeholder="成绩" v-model="screenValue.result">
+            <input class="alert-form-input" type="text" placeholder="姓名">
+            <input class="alert-form-input" type="text" placeholder="编号">
+            <input class="alert-form-input" type="text" placeholder="成绩">
         </div>
 
         <div class="alert-form-body">
@@ -18,7 +18,7 @@
         
         <div class="alert-form-foot">
             <div class="alert-form-foot-left">
-                <paging :termNum="tableValue.length" :rowNum="1" :visiblePageButNum='4' @listRange='listRange'></paging>
+                <paging :termNum="termNum" :rowNum="rowNum" :visiblePageButNum='butNum' @listRange='listRange'></paging>
             </div>
             <div class="alert-form-foot-right">
                 <button @click="blur">重置</button>
@@ -29,56 +29,50 @@
 </template>
 
 <script>
-    import paging from './paging.vue';
+    import paging from './Paging/paging.vue';
     export default {
+        name : 'alertForm',
+        mounted () {
+            this.listRange(0,this.rowNum);
+        },
         data() {
             return {
-                tableValue : [
-                    ["张三",34,91],
-                    ["张三",10,91],
-                    ["张三",40,91],
-                    ["李四",3003,33],
-                    ["王五",3838,38],
-                    ["老三",340,91],
-                    ["张饿",41,91],
-                    ["李比",31,33],
-                    ["另五",39,38],
-                ],
+                
                 filterValue : [],
-                screenValue : {
-                    name : '',
-                    number : '',
-                    result : ''
-                }
             }
         },
         components : {
             paging
         },
         props : {
+            screenValue : {
+                type : Object
+            },
             rowNum : {
                 type : Number,
                 default : 5,
-                // validator : function(value){
-                //     return /[-|.]/.test(value)
-                // }
+            },
+            termNum : {
+                type : Number,
+            },
+            tableValue : {
+                type : Array
+            },
+            butNum : {
+                type : Number,
+                default : 3
             }
         },
         methods : {
             screen(){
-                this.filterValue = this.tableValue.filter(item=>{
-                    return new RegExp(`${this.screenValue.number}`).test(item[1]) && new RegExp(this.screenValue.name).test(item[0]) && new RegExp(this.screenValue.result).test(item[2])
-                })  
+               
             },
             checkRow(value){
                 this.$emit('check',value)
             },
             blur(e){
-                this.screenValue = {
-                    name : '',
-                    number : '',
-                    result : ''
-                }
+                console.log(this.screenValue);
+                
                 this.filterValue = this.tableValue;
             },
             listRange(a,b){

@@ -16,11 +16,11 @@
         props : {
             termNum : {
                 type : Number,
-                default : 1,
+                required : true
             },
             rowNum : {
                 type : Number,
-                default : 1
+                required : true
             },
             visiblePageButNum : {
                 type : Number,
