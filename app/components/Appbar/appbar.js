@@ -1,16 +1,24 @@
 export default {
     name : 'appbar',
-    methods : {
-        createDiv(h,slot){
-            return h('div',{},[slot])
+    props : {
+        title : {
+            type : String,
+            default : ''
         }
     },
-    render(h){
-        const left = this.$scopedSlots.left();
-        const right = this.$scopedSlots.right();
-        const title = this.$scopedSlots.default();
+    render(h) {
+        const slots = this.$scopedSlots;
+        const left = slots.left && h('div',{
+            staticClass : "appbar-left"
+        },slots.left());
+        const center = h('div',{
+            staticClass : 'appbar-title'
+        },[slots.default ? slots.default() : this.title]);
+        const right = slots.right && h('div',{
+            staticClass : 'appbar-right'
+        },slots.right())
         return h('header',{
-            staticClass : 'hao-appbar'
-        },[this.createDiv(h,left),this.createDiv(h,title),this.createDiv(h,right)])
+            staticClass : 'appbar'
+        },[left,center,right])
     }
 }

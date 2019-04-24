@@ -15,9 +15,14 @@
     - [x] model
     - [x] autoValidate
     * formItem
+        - [ ] icon
         - [x] prop
         - [x] label
         - [x] labelPosition
         - [x] rules
         - [x] errorText
         - [x] helpText
+* minix
+    * haoinput
+        - [x] type
+        - [x] prop 

@@ -19,6 +19,8 @@
         <haobutton @click="aa" round flat fab disabled>按钮</haobutton>
         <haobutton large @click="aa" flat fab disabled>按钮</haobutton>
         <button @click="bb">清空</button>
+        <appbar>
+        </appbar>
     </div>
 </template>
 
@@ -28,13 +30,15 @@
     import formItem from './components/FormItem';
     import haoinput from './components/minix/haoinput.vue';
     import haobutton from './components/Button';
+    import appbar from './components/Appbar';
     export default {
         components : {
            alertForm,
            muform,
            formItem,
            haoinput,
-           haobutton
+           haobutton,
+           appbar
         },
         data(){
             return {
