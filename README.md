@@ -1,6 +1,9 @@
 # haoui
 组件库
 * appbar
+    - [x] title 
+    - [x] slot left
+    - [x] slot right
 * button
     - [ ] icon
     - [x] small
