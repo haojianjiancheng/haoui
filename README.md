@@ -14,6 +14,7 @@
     - [x] round
     - [x] fullWidth
 * icon
+    - [x] value
 * form
     - [x] model
     - [x] autoValidate
