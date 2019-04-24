@@ -13,14 +13,29 @@
             }
         },
         props : {
-            model : Object
+            model : {
+                type : Object,
+                required : true,
+            },
+            autoValidate : {
+                type : Boolean,
+                default : true
+            }
         },
         provide (){
             return {
                 form : this
             }
         },
-        methods: {
+        methods : {
+            addItem(item) {
+                this.items.push(item)
+            },
+            removeItem(item) {
+                let index = this.items.indexOf(this);
+                if(index === -1) return
+                this.items.splice(index,1)
+            },
             getVal (prop){
                 return this.model[prop]
             },
@@ -34,10 +49,12 @@
                 });
                 return Promise.all(pass)
             },
-            blur() {
-                
+            clean() {
+                this.items.forEach(item=>{
+                    item.error = '';
+                })
             }
-        },
+        }
     }
 </script>
 

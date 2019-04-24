@@ -5,10 +5,14 @@
         <alertForm v-if="show" @check='push' :rowNum='5' :tableValue='tableValue' :screenValue="screenValue" :termNum='9' :butNum='3' v-model="screenValue"></alertForm>
         <muform ref="form" :model="screenValue">
             <form-item prop='name' label="用户名" :rules='rule'>
-                <input type="text" v-model="screenValue.name">
+                <haoinput type="text" v-model="screenValue.name"></haoinput>
+            </form-item>
+            <form-item prop='number' label="编号" :rules='rule'>
+                <haoinput type="text" v-model="screenValue.number"></haoinput>
             </form-item>
         </muform>
         <button @click="aa">验证</button>
+        <button @click="bb">清空</button>
     </div>
 </template>
 
@@ -16,11 +20,13 @@
     import alertForm from "./components/alertForm";
     import muform from './components/Form';
     import formItem from './components/FormItem';
+    import haoinput from './components/minix/haoinput.vue';
     export default {
         components : {
            alertForm,
            muform,
-           formItem
+           formItem,
+           haoinput
         },
         data(){
             return {
@@ -40,13 +46,13 @@
                     ["另五",39,38],
                 ],
                 screenValue : {
-                    name : '',
+                    name : '22',
                     number : '',
                     result : ''
                 },
                 rule : [
-                    {validate : (item) => item>2&&item<10,message : "长度不够"},
-                    {validate : (item) => /\d+/.test(item), message : '都是数字才行'}
+                    {validate : (item) => item.length>2 && item.length<10,message : "长度不够"},
+                    {validate : (item) => /^\d+$/.test(item), message : '都是数字才行'}
                 ]
             }
         },
@@ -60,6 +66,9 @@
                 }).catch((item)=>{
                     console.log("未通过",item);  
                 })
+            },
+            bb(e){
+                this.$refs.form.clean()
             },
             push(value){
                 this.value = value
