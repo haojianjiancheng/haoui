@@ -6,7 +6,7 @@
 
 <script>
     export default {
-        name : 'hao-form',
+        name : 'haoForm',
         data() {
             return {
                 items : [],

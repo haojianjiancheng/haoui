@@ -1,5 +1,5 @@
 export default {
-    name : 'appbar',
+    name : 'appBar',
     props : {
         title : {
             type : String,
