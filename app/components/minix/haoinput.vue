@@ -1,6 +1,7 @@
 <template>
     <input :class="['hao-input',{
                 'hao-input-focuse' : isFocuse,
+                'hao-input-error' : !!this.formItem.error
             }]" 
             :type="type" 
             @focus='focus' 
@@ -50,8 +51,16 @@
 .hao-input{
     outline: none;
     border: 1px solid lightgray;
+    width: 257px;
+    height: 34px;
+    border-radius: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
 }
 .hao-input-focuse{
     border-color: lightblue;
+}
+.hao-input-error{
+    border-color: red;
 }
 </style>

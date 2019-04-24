@@ -1,4 +1,35 @@
+.form-item{
+    display: flex;
+    position: relative;
+    width: 367px;
+    padding-bottom: 16px;
+}
+.form-item-top{
+    flex-direction: column;
+}
 .form-item-error{
-    border-color: red;
     color: red;
+}
+
+.form-item-label{
+    width: 90px;
+    height: 38px;
+    line-height: 38px;
+    padding-right: 10px;
+}
+.form-item-label-left{
+    text-align: left;
+}
+.form-item-label-right{
+    text-align: right;
+}
+
+.form-item-help{
+    position: absolute;
+    height: 14px;
+    font-size: 12px;
+    bottom: 2px;
+}
+.form-item-help-position{
+    left: 100px;
 }

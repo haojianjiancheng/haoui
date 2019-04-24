@@ -4,7 +4,7 @@
         <button @click="eject">按钮</button>
         <alertForm v-if="show" @check='push' :rowNum='5' :tableValue='tableValue' :screenValue="screenValue" :termNum='9' :butNum='3' v-model="screenValue"></alertForm>
         <muform ref="form" :model="screenValue">
-            <form-item prop='name' label="用户名" :rules='rule'>
+            <form-item prop='name' label="用户名" labelPosition='left' :rules='rule'>
                 <haoinput type="text" v-model="screenValue.name"></haoinput>
             </form-item>
             <form-item prop='number' label="编号" :rules='rule'>

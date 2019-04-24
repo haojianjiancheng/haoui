@@ -23,7 +23,10 @@ export default {
         },
         labelPosition : {
             type : String,
-            default : 'top'
+            default : 'top',
+            validate : function(item){
+                return ['top','left','right'].includes(item)
+            }
         },
         rules : {
             type : Array
@@ -65,7 +68,8 @@ export default {
         createLabel(h) {
             if(!this.label) return;
             return h('div',{
-                staticClass : "form-item-label"
+                staticClass : "form-item-label",
+                class : `form-item-label-${this.labelPosition}`
             },[this.label])
         },
         createIcon(h) {
@@ -76,7 +80,10 @@ export default {
         },
         createHelp(h) {
             return h('div',{
-                staticClass : "form-item-help"
+                staticClass : "form-item-help",
+                class : {
+                    "form-item-help-position" : this.labelPosition !== 'top'
+                }
             },[this.helpText || this.error])
         }
     },
@@ -84,7 +91,8 @@ export default {
         return h('div',{
             staticClass : "form-item",
             class : {
-                "form-item-error" : !!this.error
+                "form-item-error" : !!this.error,
+                "form-item-top" : this.labelPosition === 'top',
             }
         },[
             this.createLabel(h),
