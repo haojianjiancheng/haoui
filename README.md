@@ -2,7 +2,7 @@
 组件库
 * appbar
 * button
-    - [] icon
+    - [ ] icon
     - [x] small
     - [x] large
     - [x] fab
