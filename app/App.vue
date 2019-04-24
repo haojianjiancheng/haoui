@@ -20,7 +20,9 @@
         <haobutton large @click="aa" flat fab disabled>按钮</haobutton>
         <button @click="bb">清空</button>
         <appbar>
+            <icon value="&#xe70b;"></icon>
         </appbar>
+        <icon value="&#xe70a;"></icon>
     </div>
 </template>
 
@@ -31,6 +33,7 @@
     import haoinput from './components/minix/haoinput.vue';
     import haobutton from './components/Button';
     import appbar from './components/Appbar';
+    import icon from './components/Icon';
     export default {
         components : {
            alertForm,
@@ -38,7 +41,8 @@
            formItem,
            haoinput,
            haobutton,
-           appbar
+           appbar,
+           icon
         },
         data(){
             return {
