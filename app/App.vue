@@ -11,13 +11,13 @@
                 <haoinput type="text" v-model="screenValue.number"></haoinput>
             </form-item>
         </muform>
-        <button @click="aa">验证</button>
-        <haobutton small @click="aa">按钮</haobutton>
-        <haobutton @click="aa">按钮</haobutton>
-        <haobutton large @click="aa">按钮</haobutton>
-        <haobutton small flat fab @click="aa">按钮</haobutton>
-        <haobutton @click="aa" round flat fab>按钮</haobutton>
-        <haobutton large @click="aa" flat fab>按钮</haobutton>
+        <button @click="aa" >验证</button>
+        <haobutton small @click="aa" fullWidth disabled>按钮</haobutton>
+        <haobutton @click="aa" fullWidth>按钮</haobutton>
+        <haobutton large @click="aa" fullWidth>按钮</haobutton>
+        <haobutton small flat fab disabled @click="aa">按钮</haobutton>
+        <haobutton @click="aa" round flat fab disabled>按钮</haobutton>
+        <haobutton large @click="aa" flat fab disabled>按钮</haobutton>
         <button @click="bb">清空</button>
     </div>
 </template>

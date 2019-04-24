@@ -7,9 +7,12 @@
                 'hao-button-round' : this.round,
                 'hao-button-fab' : this.fab,
                 'hao-button-flat' : this.flat,
+                'hao-button-disabled' : this.disabled,
+                'hao-button-full-width' : this.fullWidth
             }
         ]"
         @click="click"
+        :disabled="disabled"
     >
     <slot></slot>
     </button>
@@ -39,6 +42,14 @@
                 type : Boolean,
                 default : false,
             },
+            disabled : {
+                type : Boolean,
+                default : false,
+            },
+            fullWidth : {
+                type : Boolean,
+                default : false,
+            }
         },
         methods : {
             click(e) {
@@ -57,6 +68,7 @@
     padding: 5px 10px;
     width: 80px;
     height: 38px;
+    border-radius: 4px;
     &.hao-button-round{
         border-radius: 38px;
     }
@@ -85,5 +97,18 @@
 .hao-button-flat{
     color: lightblue;
     background-color: transparent;
+    &.hao-button-disabled{
+        cursor: not-allowed;
+        color: gray;
+        background-color: transparent;
+    }
+}
+.hao-button-disabled{
+    cursor: not-allowed;
+    color: #fff;
+    background-color: lightgray;
+}
+.hao-button-full-width{
+    width: 100%;
 }
 </style>
