@@ -12,6 +12,12 @@
             </form-item>
         </muform>
         <button @click="aa">验证</button>
+        <haobutton small @click="aa">按钮</haobutton>
+        <haobutton @click="aa">按钮</haobutton>
+        <haobutton large @click="aa">按钮</haobutton>
+        <haobutton small flat fab @click="aa">按钮</haobutton>
+        <haobutton @click="aa" round flat fab>按钮</haobutton>
+        <haobutton large @click="aa" flat fab>按钮</haobutton>
         <button @click="bb">清空</button>
     </div>
 </template>
@@ -21,12 +27,14 @@
     import muform from './components/Form';
     import formItem from './components/FormItem';
     import haoinput from './components/minix/haoinput.vue';
+    import haobutton from './components/Button';
     export default {
         components : {
            alertForm,
            muform,
            formItem,
-           haoinput
+           haoinput,
+           haobutton
         },
         data(){
             return {

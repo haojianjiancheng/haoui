@@ -17,10 +17,6 @@ export default {
         },
         icon : String,
         label : String,
-        labelFloat : {
-            type : Boolean,
-            default : false
-        },
         labelPosition : {
             type : String,
             default : 'top',
