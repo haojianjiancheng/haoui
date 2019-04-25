@@ -13,6 +13,7 @@
     - [x] disabled
     - [x] round
     - [x] fullWidth
+    - [x] right
 * icon
     - [x] value
 * form

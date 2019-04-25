@@ -19,7 +19,7 @@
             <haobutton small flat fab @click="aa" icon='&#xe70a;'>按钮</haobutton>
             <haobutton @click="aa" round flat disabled icon='&#xe70a;'>按钮</haobutton>
             <haobutton large @click="aa" fab disabled icon='&#xe70a;'>按钮</haobutton>
-            <haobutton large @click="aa" flat icon='&#xe70a;'>按钮</haobutton>
+            <haobutton large @click="aa" flat right icon='&#xe70a;'>按钮</haobutton>
         </div>
        
         <button @click="bb">清空</button>

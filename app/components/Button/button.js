@@ -32,10 +32,19 @@ export default {
             default : false,
         },
         icon : {
-            type : String
+            type : String,
+        },
+        right : {
+            type : Boolean,
+            default : false,
         }
     },
     methods : {
+        iconPosition(h) {
+            if(!this.icon) return [ this.$scopedSlots.default() ];
+            if(this.right) return [ this.$scopedSlots.default() , h(Icon,{ props : { value : this.icon } }) ];
+            return [ h(Icon,{ props : { value : this.icon } }) , this.$scopedSlots.default() ];
+        },
         click(e) {
             this.$emit('click',e)
         }
@@ -59,13 +68,6 @@ export default {
             on : {
                 click : this.click
             }
-        },[
-            !!this.icon && h(Icon,{
-                props : {
-                    value : this.icon
-                }
-            }),
-            this.$scopedSlots.default()
-        ])
+        },this.iconPosition(h))
     }
 }
