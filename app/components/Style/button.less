@@ -1,14 +1,23 @@
 .hao-button{
     outline: none;
     border: none;
+    cursor: pointer;
     background-color: lightblue;
     color: #fff;
     padding: 5px 10px;
     min-width: 80px;
     height: 38px;
     border-radius: 4px;
+    margin: 10px;
     &.hao-button-round{
         border-radius: 38px;
+    }
+    &:hover{
+        background-color: rgb(133, 133, 238);
+    }
+    &:active{
+        box-shadow: 2px 3px 5px -1px rgba(0,0,0,.2), 4px 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+
     }
 }
 .hao-button-large{
@@ -32,6 +41,14 @@
 .hao-button-fab{
     box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),0 6px 10px 0 rgba(0,0,0,.14),0 1px 18px 0 rgba(0,0,0,.12);
 }
+.hao-button-disabled{
+    cursor: not-allowed;
+    color: #fff;
+    background-color: lightgray;
+    &:hover{
+        background-color: lightgray;
+    }
+}
 .hao-button-flat{
     color: lightblue;
     background-color: transparent;
@@ -40,11 +57,12 @@
         color: gray;
         background-color: transparent;
     }
-}
-.hao-button-disabled{
-    cursor: not-allowed;
-    color: #fff;
-    background-color: lightgray;
+    &:hover{
+        background-color: transparent;
+    }
+    &:active{
+        box-shadow: none;
+    }
 }
 .hao-button-full-width{
     width: 100%;

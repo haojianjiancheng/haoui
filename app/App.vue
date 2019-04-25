@@ -12,12 +12,16 @@
             </form-item>
         </muform>
         <button @click="aa" >验证</button>
-        <haobutton small @click="aa" fullWidth disabled icon='&#xe70a;'>按钮</haobutton>
-        <haobutton @click="aa" fullWidth icon='&#xe70a;'>按钮</haobutton>
-        <haobutton large @click="aa" fullWidth icon='&#xe70a;'>按钮</haobutton>
-        <haobutton small flat fab disabled @click="aa" icon='&#xe70a;'>按钮</haobutton>
-        <haobutton @click="aa" round flat fab disabled icon='&#xe70a;'>按钮</haobutton>
-        <haobutton large @click="aa" flat fab disabled icon='&#xe70a;'>按钮</haobutton>
+        <div class='button-group'>
+            <haobutton small @click="aa" disabled icon='&#xe70a;'>按钮</haobutton>
+            <haobutton @click="aa" fullWidth icon='&#xe70a;'>按钮</haobutton>
+            <haobutton large @click="aa" fullWidth icon='&#xe70a;'>按钮</haobutton>
+            <haobutton small flat fab @click="aa" icon='&#xe70a;'>按钮</haobutton>
+            <haobutton @click="aa" round flat disabled icon='&#xe70a;'>按钮</haobutton>
+            <haobutton large @click="aa" fab disabled icon='&#xe70a;'>按钮</haobutton>
+            <haobutton large @click="aa" flat icon='&#xe70a;'>按钮</haobutton>
+        </div>
+       
         <button @click="bb">清空</button>
         <appbar>
             <icon value="&#xe70b;"></icon>
@@ -95,6 +99,11 @@
 
 <style lang="less" scoped>
     #app{
-       
+       .button-group{
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center
+       }
     }
 </style>
