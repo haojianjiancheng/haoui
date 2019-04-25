@@ -5,6 +5,7 @@
     - [x] slot left
     - [x] slot right
 * button
+    - [x] icon
     - [x] small
     - [x] large
     - [x] fab
