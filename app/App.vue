@@ -12,12 +12,12 @@
             </form-item>
         </muform>
         <button @click="aa" >验证</button>
-        <haobutton small @click="aa" fullWidth disabled>按钮</haobutton>
-        <haobutton @click="aa" fullWidth>按钮</haobutton>
-        <haobutton large @click="aa" fullWidth>按钮</haobutton>
-        <haobutton small flat fab disabled @click="aa">按钮</haobutton>
-        <haobutton @click="aa" round flat fab disabled>按钮</haobutton>
-        <haobutton large @click="aa" flat fab disabled>按钮</haobutton>
+        <haobutton small @click="aa" fullWidth disabled icon='&#xe70a;'>按钮</haobutton>
+        <haobutton @click="aa" fullWidth icon='&#xe70a;'>按钮</haobutton>
+        <haobutton large @click="aa" fullWidth icon='&#xe70a;'>按钮</haobutton>
+        <haobutton small flat fab disabled @click="aa" icon='&#xe70a;'>按钮</haobutton>
+        <haobutton @click="aa" round flat fab disabled icon='&#xe70a;'>按钮</haobutton>
+        <haobutton large @click="aa" flat fab disabled icon='&#xe70a;'>按钮</haobutton>
         <button @click="bb">清空</button>
         <appbar>
             <icon value="&#xe70b;"></icon>
