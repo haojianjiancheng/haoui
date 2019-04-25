@@ -61,27 +61,32 @@
 
 #### icon
 * props 
+
     参数 | 作用 | 类型 | 可选值 | 默认值
     --- | --- | --- | :---: | :---:  
     value | 图标 | String | - | -
 
 #### form
 * props
+
     参数 | 作用 | 类型 | 可选值 | 默认值
     --- | --- | --- | :---: | :---:  
     model | 数据对象 | Object | - | -
     autoValidate | 自动验证 | Boolean | - | true
 * slots
+
     名称 | 作用
     --- | ---
     default | 只有formItem才有用
 * methods
+
     名称 | 作用 | 参数
     --- | --- | :---:
     validate | 表单验证 | -
 
 #### formItem
 * props
+
     参数 | 作用 | 类型 | 可选值 | 默认值
     --- | --- | --- | :---: | :---:  
     icon | 图标 | String | - | -
@@ -92,6 +97,7 @@
     errorText | 错误信息 | - | - | -
     helpText | 帮助信息 | - | - | -
 * slots
+
     名称 | 作用
     --- | ---
     default | 必须插入input组件
