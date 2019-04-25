@@ -77,12 +77,12 @@
 
     名称 | 作用
     --- | ---
-    default | 只有formItem才有用
+    default | 必须插入formItem
 * methods
 
     名称 | 作用 | 参数
     --- | --- | :---:
-    validate | 表单验证 | -
+    validate | 表单验证（返回一个Promise） | -
 
 #### formItem
 * props
@@ -94,8 +94,8 @@
     label | 标签名 | String | - |-
     labelPosition | 标签名定位 | String | top/left/right | -
     rules | 验证（`{ validate : (value)=>{} , message : " " }`）函数验证规则，message错误提示信息 | Array | - | -
-    errorText | 错误信息 | - | - | -
-    helpText | 帮助信息 | - | - | -
+    errorText | 错误信息(触发error状态) | String | - | -
+    helpText | 帮助信息 | - | String | -
 * slots
 
     名称 | 作用

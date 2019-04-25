@@ -80,7 +80,7 @@ export default {
                 class : {
                     "form-item-help-position" : this.labelPosition !== 'top'
                 }
-            },[this.helpText || this.error])
+            },[this.error || this.helpText])
         }
     },
     render(h) {

@@ -4,16 +4,16 @@
         <button @click="eject">按钮</button>
         <alertForm v-if="show" @check='push' :rowNum='5' :tableValue='tableValue' :screenValue="screenValue" :termNum='9' :butNum='3' v-model="screenValue"></alertForm>
         <muform ref="form" :model="screenValue">
-            <form-item prop='name' label="用户名" labelPosition='left' :rules='rule'>
+            <form-item prop='name' label="用户名" labelPosition='left' :rules='rule' helpText="请输入用户名">
                 <haoinput type="text" v-model="screenValue.name"></haoinput>
             </form-item>
-            <form-item prop='number' label="编号" :rules='rule'>
+            <form-item prop='number' label="编号" :rules='rule' helpText="请输入密码">
                 <haoinput type="text" v-model="screenValue.number"></haoinput>
             </form-item>
         </muform>
         <button @click="aa" >验证</button>
         <div class='button-group'>
-            <haobutton small @click="aa" disabled icon='&#xe70a;'>按钮</haobutton>
+            <haobutton small icon='&#xe70a;' @click.ctrl.exact="aa">按钮</haobutton>
             <haobutton @click="aa" fullWidth icon='&#xe70a;'>按钮</haobutton>
             <haobutton large @click="aa" fullWidth icon='&#xe70a;'>按钮</haobutton>
             <haobutton small flat fab @click="aa" icon='&#xe70a;'>按钮</haobutton>
@@ -81,6 +81,8 @@
                 this.show = !this.show;
             },
             aa(e){
+                console.log(1);
+                
                 this.$refs.form.validate().then((item)=>{
                     console.log("通过",item);
                 }).catch((item)=>{

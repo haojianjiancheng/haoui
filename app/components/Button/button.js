@@ -66,7 +66,8 @@ export default {
                 ...this.attrs
             },
             on : {
-                click : this.click
+                click : this.click,
+                ...this.$listeners
             }
         },this.iconPosition(h))
     }
