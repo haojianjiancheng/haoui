@@ -13,15 +13,28 @@
         </muform>
         <button @click="aa" >验证</button>
         <div class='button-group'>
-            <haobutton small icon='&#xe70a;' @click.ctrl.exact="aa">按钮</haobutton>
+            <haobutton small icon='&#xe70a;' @click="aa">按钮</haobutton>
             <haobutton @click="aa" fullWidth icon='&#xe70a;'>按钮</haobutton>
             <haobutton large @click="aa" fullWidth icon='&#xe70a;'>按钮</haobutton>
             <haobutton small flat fab @click="aa" icon='&#xe70a;'>按钮</haobutton>
             <haobutton @click="aa" round flat disabled icon='&#xe70a;'>按钮</haobutton>
             <haobutton large @click="aa" fab disabled icon='&#xe70a;'>按钮</haobutton>
             <haobutton large @click="aa" flat right icon='&#xe70a;'>按钮</haobutton>
+            <haobutton @click="aa" disabled right icon='&#xe70a;'>按钮</haobutton>
         </div>
-       
+        <paging :total='6' :pageSize='1' :butNum='3' :current.sync='value'></paging>
+        <paging :total='6' :pageSize='1' flat :butNum='3' :current.sync='value'></paging>
+        <paging :total='6' :pageSize='1' circle :butNum='3' :current.sync='value'></paging>
+        <paging :total='6' :pageSize='1' fab circle :butNum='3' :current.sync='value'></paging>
+        <paging :total='6' :pageSize='1' fab :butNum='3' :current.sync='value'></paging>
+        <paging :total='6' :pageSize='1' small :butNum='3' round :current.sync='value'></paging>
+        <paging :total='6' :pageSize='1' flat circle :butNum='3' round :current.sync='value'></paging>
+        <paging :total='6' :pageSize='1' flat fab :butNum='3' round :current.sync='value'></paging>
+        <paging :total='6' :pageSize='1' flat fab small :butNum='3' round :current.sync='value'></paging>
+        <paging :total='6' :pageSize='1' flat fab circle :butNum='3' round :current.sync='value'></paging>
+        <paging :total='6' :pageSize='1' flat fab circle small :butNum='3' round :current.sync='value'></paging> {{value}}
+
+
         <button @click="bb">清空</button>
         <appbar>
             <icon value="&#xe70b;"></icon>
@@ -38,6 +51,7 @@
     import haobutton from './components/Button';
     import appbar from './components/Appbar';
     import icon from './components/Icon';
+    import paging from './components/paging';
     export default {
         components : {
            alertForm,
@@ -46,13 +60,14 @@
            haoinput,
            haobutton,
            appbar,
-           icon
+           icon,
+           paging
         },
         data(){
             return {
                 show : false,
                 checkboxValue : [],
-                value : '',
+                value : 0,
                 testValue : '',
                 tableValue : [
                     ["张三",34,91],

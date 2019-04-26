@@ -4,9 +4,10 @@
                 'hao-input-error' : !!this.formItem.error
             }]" 
             :type="type" 
-            @focus='focus' 
+            @focus="focus" 
             @blur="blur"
             @input="input"
+            v-bind="$attrs"
     >
 </template>
 

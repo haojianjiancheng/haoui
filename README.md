@@ -27,6 +27,15 @@
         - [x] rules
         - [x] errorText
         - [x] helpText
+* paging
+    - [x] small
+    - [x] circle
+    - [x] fab
+    - [x] flat
+    - [x] total
+    - [x] pageSize
+    - [x] current
+    - [x] butNum
 * minix
     * haoinput
         - [x] type
@@ -101,3 +110,17 @@
     名称 | 作用
     --- | ---
     default | 必须插入input组件
+
+#### paging
+* props
+
+     参数 | 作用 | 类型 | 可选值 | 默认值
+    --- | --- | --- | :---: | :---:  
+    small | 小按钮 | Boolean | - | false
+    fab | 浮动（阴影）| Boolean | - | false
+    flat | 扁平化 | Boolean | - |false
+    circle | 圆形 | Boolean | - | false
+    total | 总条目数 | Number | - | -
+    current | 当前页数（支持`.sync`修饰符）| Number |- | -
+    pageSize | 每页显示的条目个数 | Number | - | -
+    butNum | 显示的按钮数量（不包括`...`、`<>`、开头数和结尾数） | Number | - | -
