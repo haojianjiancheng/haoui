@@ -33,6 +33,8 @@
         <paging :total='6' :pageSize='1' flat fab small :butNum='3' round :current.sync='value'></paging>
         <paging :total='6' :pageSize='1' flat fab circle :butNum='3' round :current.sync='value'></paging>
         <paging :total='6' :pageSize='1' flat fab circle small :butNum='3' round :current.sync='value'></paging> {{value}}
+        <numberinput v-model="input" :min='-100' :max='30'  prepend='dj'></numberinput> {{input}}
+        <numberinput v-model="input" :min='1' :max='30' :decimal='2' append='dj'></numberinput>
 
 
         <button @click="bb">清空</button>
@@ -52,6 +54,7 @@
     import appbar from './components/Appbar';
     import icon from './components/Icon';
     import paging from './components/paging';
+    import numberinput from './components/numberInput';
     export default {
         components : {
            alertForm,
@@ -61,12 +64,14 @@
            haobutton,
            appbar,
            icon,
-           paging
+           paging,
+           numberinput
         },
         data(){
             return {
                 show : false,
                 checkboxValue : [],
+                input : 4,
                 value : 0,
                 testValue : '',
                 tableValue : [
