@@ -28,6 +28,12 @@ export default {
             timer : null,
         }
     },
+    computed : {
+        normal () {
+            if(this.number || this.append || this.prepend) return false;
+            return true
+        }
+    },
     methods : {
         updateValue(value) {
             let reg = /^(-?\d+\.?\d*)$/
@@ -51,6 +57,31 @@ export default {
                 clearTimeout(this.timer)
                 this.timer = null;
             },500);
+        },
+        createNormal(h,value){
+            let className ;
+            if(value === '+') {
+                className = 'append-box'
+            }else{
+                className = 'prepend-box'
+            };
+            return h('div',{
+                staticClass : `label ${className}`,
+                class : {
+                    'disabled' : this.disabled
+                },
+                on : {
+                    click : () => {
+                        if(this.disabled) return;
+                        let result = this.value;
+                        if(value === '+'){
+                            this.updateValue(result+1);
+                        }else{
+                            this.updateValue(result-1);
+                        }
+                    }
+                }
+            },[value])
         },
         createLabel(h,number,append,prepend) {
             if(number){
@@ -115,8 +146,8 @@ export default {
             staticClass : "number-input",
             class : {
                 'append' : this.append || this.number,
-                'prepend' : this.prepend,
-                'disabled' : this.disabled 
+                'prepend' : this.normal || this.prepend,
+                'disabled' : this.disabled
             },
             on : {
                 input : (e) => {
@@ -138,6 +169,8 @@ export default {
         return h('div',{
             staticClass : 'number-box'
         },[
+            this.normal ? this.createNormal(h,'-') : '',
+            this.normal ? this.createNormal(h,'+') : '',
             input,
             this.createLabel(h,this.number,this.append,this.prepend)
         ])

@@ -1,6 +1,6 @@
 export function createSvg (h,path) {
     return h('svg',{
-        staticClass : 'paging-svg-icon',
+        staticClass : 'svg-icon',
         attrs : {
             viewBox : '0 0 24 24',
         }

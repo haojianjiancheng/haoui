@@ -7,13 +7,14 @@
         border: 1px solid lightgray;
         width: 190px;
         height: 34px;
-        border-radius: 4px 0 0 4px;
         &.prepend{
             padding-left: 66px;
-            border-radius: 0 4px 4px 0;
+            border-radius: 4px;
         }
         &.append{
+            width: 246px;
             padding-left: 10px;
+            border-radius: 4px;
         }
         &:focus{
             border-color: lightblue;
@@ -24,28 +25,33 @@
     }
     .label{
         position: absolute;
-        top: 0;
+        top: 1px;
         overflow: hidden;
         width: 55px;
         height: 36px;
-        border-top: 1px solid lightgray;
-        border-bottom: 1px solid lightgray;
         text-align: center;
         line-height: 36px;
         background-color: lightblue;
         user-select: none;
         .label-span{
             position: absolute;
-            left: 0;
+            left: 1px;
             overflow: hidden;
             width: 55px;
             cursor: pointer;
+            .svg-icon{
+                color: #fff;
+            }
             &:hover{
-                color: blue;
+                .svg-icon{
+                    color : blue;
+                }
             }
             &.disabled{
                 cursor: not-allowed;
-                color: #fff;
+                .svg-icon{
+                    color: #fff;
+                }
             }
         }
         .label-top{
@@ -65,13 +71,17 @@
         }
     }
     .append-box{
-        right: 0;
+        right: 1px;
         border-radius: 0 4px 4px 0;
-        border-right: 1px solid lightgray;
+        &:hover +.number-input{
+            border-color: blue;
+        }
     }
     .prepend-box{
-        left: 0;
+        left: 1px;
         border-radius: 4px 0 0 4px;
-        border-left: 1px solid lightgray;
+        &:hover ~.number-input{
+            border-color: blue;
+        }
     }
 }
