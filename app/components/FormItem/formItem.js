@@ -44,12 +44,34 @@ export default {
     },
     methods: {
         validate () {
-            if(!this.rules || this.rules.length == 0) return;
-            return !this.rules.some((item)=>{
+            if(!this.rules || this.rules.length == 0) return true;
+            let promise = [];
+            let promiseMessage = [];
+            let validateResult = this.rules.some((item)=>{
                 let result = item.validate(this.form.getVal(this.prop));
+                if(typeof result.then === 'function'){
+                    promise.push(result);
+                    promiseMessage.push(item.message);
+                    return false
+                }
                 result || this.updateError(item.message);
                 return !result
-            },this)
+            },this);
+            if(promise.length === 0) return !validateResult
+            if(promise.length > 0){                
+                return Promise.all(promise).then((result)=>{            
+                    for (let i = 0; i < result.length; i++) {
+                        if(!result[i]){
+                            this.updateError(promiseMessage[i]);
+                            return Promise.reject(false);
+                        }
+                        this.updateError('');
+                        return true
+                    }
+                })
+            }
+            this.updateError('');
+            return true;
         },
         updateError(value = "错误信息"){
             this.error = value
@@ -59,7 +81,7 @@ export default {
         },
         onBlur() {
             this.isFocuse = false;
-            if(this.form.autoValidate) this.validate() && this.updateError('');
+            if(this.form.autoValidate) this.validate();
         },
         createLabel(h) {
             if(!this.label) return;

@@ -91,8 +91,31 @@
                     result : ''
                 },
                 rule : [
-                    {validate : (item) => item.length>2 && item.length<10,message : "长度不够"},
-                    {validate : (item) => /^\d+$/.test(item), message : '都是数字才行'}
+                    // {validate : (item) => item.length>2 && item.length<10,message : "长度不够"},
+                    // {validate : (item) => /^\d+$/.test(item), message : '都是数字才行'},
+                    {
+                        validate : (item,prop) =>{
+                            return new Promise ((res,rej)=>{
+                                if(item=="3"){
+                                    return res(true)
+                                }else{
+                                    rej(false)
+                                }
+                            })
+                        },
+                        message :"错误的"
+                    },{
+                        validate : (item,prop) =>{
+                            return new Promise ((res)=>{
+                                if (item == '3'){
+                                    res(true)
+                                }else{
+                                    res(false)
+                                }
+                            })
+                        },
+                        message : "cuowu"
+                    }
                 ]
             }
         },
@@ -101,12 +124,8 @@
                 this.show = !this.show;
             },
             aa(e){
-                console.log(1);
-                
                 this.$refs.form.validate().then((item)=>{
-                    console.log("通过",item);
-                }).catch((item)=>{
-                    console.log("未通过",item);  
+                    console.log(item);
                 })
             },
             bb(e){

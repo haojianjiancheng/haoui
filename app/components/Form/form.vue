@@ -40,14 +40,22 @@
                 return this.model[prop]
             },
             validate() {
-                let pass = [];
-                this.items.forEach(item => {
-                    let result = item.validate();
-                    console.log(result);
-                    
-                    pass.push(result ? Promise.resolve(result) : Promise.reject(result));
-                });
-                return Promise.all(pass)
+                let end = true;
+                let promise = [];
+                for (let i = 0; i < this.items.length; i++) {
+                    let result = this.items[i].validate();
+                    if(typeof result.then === 'function'){
+                        promise.push(result);
+                        continue;
+                    };
+                    if(!result){
+                        end = false;
+                    }
+                }
+                if(promise.length>0){
+                    return Promise.all ([end ? Promise.resolve(end) : Promise.reject(end),...promise]).then(()=>true,()=>false);
+                }
+                return promise.resolve(end);
             },
             clean() {
                 this.items.forEach(item=>{
