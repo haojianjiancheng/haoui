@@ -41,7 +41,7 @@
         - [x] type
         - [x] prop 
 
-#### appBar 
+### appBar 
 * props
     参数 | 作用 | 类型 | 可选值 | 默认值
     --- | --- | --- | :---: | :---:  
@@ -53,7 +53,7 @@
     right | 右边的内容
     default | 中间的内容，覆盖title
 
-#### button 
+### button 
 * props
 
     参数 | 作用 | 类型 | 可选值 | 默认值
@@ -68,14 +68,14 @@
     flat | 扁平 | Boolean | - | false
     disabled | 禁用 | Boolean | - | false
 
-#### icon
+### icon
 * props 
 
     参数 | 作用 | 类型 | 可选值 | 默认值
     --- | --- | --- | :---: | :---:  
     value | 图标 | String | - | -
 
-#### form
+### form
 * props
 
     参数 | 作用 | 类型 | 可选值 | 默认值
@@ -93,7 +93,7 @@
     --- | --- | :---:
     validate | 表单验证（返回一个Promise） | -
 
-#### formItem
+### formItem
 * props
 
     参数 | 作用 | 类型 | 可选值 | 默认值
@@ -111,7 +111,7 @@
     --- | ---
     default | 必须插入input组件
 
-#### paging
+### paging
 * props
 
      参数 | 作用 | 类型 | 可选值 | 默认值
@@ -130,7 +130,7 @@
     --- | --- | ---
     change | 当前页面改变时触发（返回当前页码） | -
 
-#### numberInput
+### numberInput
 * props
 
      参数 | 作用 | 类型 | 可选值 | 默认值
