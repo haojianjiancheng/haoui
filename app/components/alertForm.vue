@@ -29,7 +29,7 @@
 </template>
 
 <script>
-    import paging from './Paging/paging.vue';
+    import paging from './Paging/';
     export default {
         name : 'alertForm',
         mounted () {

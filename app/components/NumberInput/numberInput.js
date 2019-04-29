@@ -1,3 +1,4 @@
+import { createSvg } from '../minix/unit.js'
 export default {
     name : "numberInput",
     props : {
@@ -12,7 +13,15 @@ export default {
         },
         decimal : Number,
         append : String,
-        prepend : String
+        prepend : String,
+        disabled : {
+            type : Boolean,
+            default : false,
+        },
+        number : {
+            type : Boolean,
+            default : false
+        }
     },
     data() {
         return {
@@ -28,6 +37,7 @@ export default {
             if(result < this.min) result = this.min;
             if(result > this.max) result = this.max;
             this.$emit('input',this.format(result));
+            this.$emit('change',this.format(result));
         },
         format(value){
             if(this.decimal) return parseFloat(value).toFixed(this.decimal);
@@ -42,30 +52,71 @@ export default {
                 this.timer = null;
             },500);
         },
-        createLabel(h) {
-            if(this.append){
+        createLabel(h,number,append,prepend) {
+            if(number){
                 return h('div',{
-                    staticClass : "label",
-                    class : "append-box"
-                },[this.append])
+                    staticClass : "label append-box",
+                    class : {
+                        'disabled' : this.disabled
+                    }
+                },[h('span',{
+                    staticClass : 'label-span label-top',
+                    class : {
+                        'disabled' : this.disabled
+                    },
+                    on : {
+                        click : () => {
+                            if(this.disabled) return;
+                            let value = this.value+1;
+                            this.updateValue(value);
+                        }
+                    }
+                },[createSvg(h,'M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z')]),h('span',{
+                    staticClass : 'label-span label-bottom',
+                    class : {
+                        'disabled' : this.disabled
+                    },
+                    on : {
+                        click : () => {
+                            if(this.disabled) return;
+                            let value = this.value-1;
+                            this.updateValue(value);
+                        }
+                    }
+                },[createSvg(h,'M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z')])])
             }
-            if(this.prepend){
+            if(append){
                 return h('div',{
-                    staticClass : 'label',
-                    class : "prepend-box"
-                },[this.prepend])
+                    staticClass : "label append-box",
+                    class : {
+                        'disabled': this.disabled
+                    }
+                },[append])
+            }
+            if(prepend){
+                return h('div',{
+                    staticClass : 'label prepend-box',
+                    class : {
+                        'disabled' : this.disabled
+                    }
+                },[prepend])
             }
         }
     },
     render(h) {
         let input = h('input',{
-            attrs : {
+            domProps : {
                 value : this.value,
-                ...this.$attrs
+                autocomplete : 'off',
+                min : this.min,
+                max : this.max,
+                disabled : this.disabled
             },
             staticClass : "number-input",
             class : {
-                'prepend' : !!this.prepend
+                'append' : this.append || this.number,
+                'prepend' : this.prepend,
+                'disabled' : this.disabled 
             },
             on : {
                 input : (e) => {
@@ -88,7 +139,7 @@ export default {
             staticClass : 'number-box'
         },[
             input,
-            this.createLabel(h)
+            this.createLabel(h,this.number,this.append,this.prepend)
         ])
     }
 }

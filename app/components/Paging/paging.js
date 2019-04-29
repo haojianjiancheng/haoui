@@ -1,3 +1,4 @@
+import { createSvg } from '../minix/unit.js'
 
 export default {
     name : 'paging',
@@ -102,22 +103,8 @@ export default {
             this.$emit('update:current',value);
             this.$emit('change',value);
         },
-        createSvg(h,num) {
-            return h('svg',{
-                staticClass : 'paging-svg-icon',
-                attrs : {
-                    viewBox : '0 0 24 24',
-                }
-            },[
-                h('path',{
-                    attrs : {
-                        d : this.jump[num].path
-                    }
-                })
-            ])
-        },
         createPage(h,num) {
-            let value = /^\d+$/.test(num) ? num : this.createSvg(h,num);
+            let value = /^\d+$/.test(num) ? num : createSvg(h,this.jump[num].path);
             let disabled ; 
             if(num === '>'){
                 disabled = this.current >= this.totalBut ? true : false

@@ -138,5 +138,12 @@
     min | 最小数（可以是负数、小数） | Number | - | - 
     max | 最大数（可以是负数、小数） | Number | - | - 
     decimal | 保留几位小数（四舍五入），注意：加上这个选项，数据不会在输入时更新，而是在离开输入框500ms后更新 | Number | - |-
-    append | 右边单位提示框 | String | - | - 
-    prepend | 左边单位提示框 | String | - | -
+    disabled | 禁用 | Boolean | - | - 
+    number | 显示右边`+-`(优先级1) | Boolean | - | -
+    append | 右边单位提示框（优先级2） | String | - | - 
+    prepend | 左边单位提示框（优先级3） | String | - | -
+* event
+
+    名称 | 作用 | 回调
+    --- | --- | ---
+    change | 当前数字改变触发（返回当前数字） | -

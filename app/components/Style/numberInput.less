@@ -7,19 +7,25 @@
         border: 1px solid lightgray;
         width: 190px;
         height: 34px;
-        padding-left: 10px;
         border-radius: 4px 0 0 4px;
         &.prepend{
             padding-left: 66px;
             border-radius: 0 4px 4px 0;
         }
+        &.append{
+            padding-left: 10px;
+        }
         &:focus{
             border-color: lightblue;
+        }
+        &.disabled{
+            cursor: not-allowed;
         }
     }
     .label{
         position: absolute;
         top: 0;
+        overflow: hidden;
         width: 55px;
         height: 36px;
         border-top: 1px solid lightgray;
@@ -28,6 +34,35 @@
         line-height: 36px;
         background-color: lightblue;
         user-select: none;
+        .label-span{
+            position: absolute;
+            left: 0;
+            overflow: hidden;
+            width: 55px;
+            cursor: pointer;
+            &:hover{
+                color: blue;
+            }
+            &.disabled{
+                cursor: not-allowed;
+                color: #fff;
+            }
+        }
+        .label-top{
+            top: 0;
+            height: 19px;
+            transform: rotateX(180deg);  
+        }
+        .label-bottom{
+            bottom: 0;
+            height: 18px;
+            border-top: 1px solid #fff;
+        }
+        &.disabled{
+            background-color: lightgray;
+            color: #fff;
+            cursor: not-allowed;
+        }
     }
     .append-box{
         right: 0;
