@@ -61,9 +61,9 @@ export default {
         createNormal(h,value){
             let className ;
             if(value === '+') {
-                className = 'append-box'
+                className = 'append-box normal'
             }else{
-                className = 'prepend-box'
+                className = 'prepend-box normal'
             };
             return h('div',{
                 staticClass : `label ${className}`,

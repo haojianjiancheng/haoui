@@ -73,9 +73,6 @@
     .append-box{
         right: 1px;
         border-radius: 0 4px 4px 0;
-        &:hover{
-            color: blue;
-        }
         &.disabled{
             color: #fff;
         }
@@ -86,14 +83,14 @@
     .prepend-box{
         left: 1px;
         border-radius: 4px 0 0 4px;
-        &:hover{
-            color: blue;
-        }
         &.disabled{
             color: #fff;
         }
         &:hover ~.number-input{
             border-color: blue;
         }
+    }
+    .normal:hover{
+        color: blue;
     }
 }
