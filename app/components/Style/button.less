@@ -1,71 +1,135 @@
+@normal_height : 38px;
+@normal_width : 80px;
+
+@small_height : 34px;
+@small_width : 34px;
+
+@large_height : 40px;
+@large_width : 108px;
+
+@normal_bc : lightblue;
+@normal_text_color : #fff;
+
+@disabled_bc : lightgray;
+@disabled_text_color : red;
+
+@hover_bc : blue;
+
+
 .hao-button{
+    position: relative;
     outline: none;
     border: none;
     cursor: pointer;
-    background-color: lightblue;
-    color: #fff;
+    background-color: @normal_bc;
+    color: @normal_text_color;
     padding: 5px 10px;
-    min-width: 80px;
-    height: 38px;
+    min-width: @normal_width;
+    height: @normal_height;
     border-radius: 4px;
     &.hao-button-round{
-        border-radius: 38px;
+        border-radius: @normal_height;
     }
     &:hover{
-        background-color: rgb(133, 133, 238);
+        background-color: @hover_bc;
     }
     &:active{
         box-shadow: 2px 3px 5px -1px rgba(0,0,0,.2), 4px 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
-
+    }
+    .loading-box{
+        width: 18px;
+        height: 14px;
+        display: inline-block;
+        vertical-align: text-bottom;
+        .button-loading{
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 2px solid transparent;
+            border-right-color: @normal_text_color;
+            border-radius: 50%;
+            animation: loading .5s linear infinite;
+        }
+    }
+    .loading-text{
+        vertical-align: text-bottom;
     }
 }
 .hao-button-large{
-    min-width: 108px;
-    height: 40px;
+    min-width: @large_width;
+    height: @large_height;
     font-size: 20px;
     font-weight: 500;
     vertical-align: middle;
     letter-spacing: 2px;
     &.hao-button-round{
-        border-radius: 40px;
+        border-radius: @large_height;
+    }
+    .loading-box{
+        width: 24px;
+        height: 20px;
+        vertical-align: text-top;
+        .button-loading{
+            width: 16px;
+            height: 16px;
+        }
     }
 }
 .hao-button-small{
-    min-width: 34px;
-    height: 34px;
+    min-width: @small_width;
+    height: @small_height;
     &.hao-button-round{
-        border-radius: 34px;
+        border-radius: @small_height;
     }
 }
 .hao-button-fab{
     box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),0 6px 10px 0 rgba(0,0,0,.14),0 1px 18px 0 rgba(0,0,0,.12);
 }
+
 .hao-button-disabled{
     cursor: not-allowed;
-    color: #fff;
-    background-color: lightgray;
+    color: @disabled_text_color;
+    background-color: @disabled_bc;
     &:hover{
-        background-color: lightgray;
+        background-color: @disabled_bc;
     }
     &:active{
         box-shadow: none;
     }
 }
+
 .hao-button-flat{
-    color: lightblue;
+    color: @normal_bc;
     background-color: transparent;
     &.hao-button-disabled{
         cursor: not-allowed;
-        color: gray;
-        background-color: transparent;
+        color: @disabled_text_color;
+        background-color: transparent; 
     }
     &:hover{
         background-color: transparent;
     }
     &:active{
         box-shadow: none;
+    }
+    .loading-box{
+        .button-loading{
+            border-right-color: gray;
+        }
     }
 }
 .hao-button-full-width{
     width: 100%;
+}
+@keyframes loading {
+    from {
+        transform: rotate(0)
+    }
+    to {
+        transform: rotate(360deg)
+    }
+}
+.loading-text{
+    display: inline-block;
+    vertical-align: middle;
 }

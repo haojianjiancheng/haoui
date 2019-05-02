@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import loadingOriginal from './loading.js';
+import loadingOriginal from './loading.vue';
 
 let LoadingConstructor = Vue.extend(loadingOriginal);
 const isServer = typeof window === 'undefined';
@@ -7,11 +7,12 @@ let Loading = function (options = {}){
     if (isServer) return;
     const target = options.target && typeof options.target.appendChild === 'function' ? options.target : document.body;
     if(target._loading) return;
+    console.log(target);
+    
     let loading = new LoadingConstructor({
         el : document.createElement('div'),
         propsData : {
             ...options,
-            fixed : !options.target
         }
     });
     target.appendChild(loading.$el);
@@ -32,13 +33,25 @@ let Loading = function (options = {}){
         }
     }
 };
+const directive = {
+    name : 'loading',
+    inserted (el,{value}){
+        console.log(el.offsetHeight);
+        console.log(el.offsetWidth);
+        
+        let options = {
+            target : el,
+            width : el.offsetWidth+'px',
+            height : el.offsetHeight+'px'
+        }
+        Loading(options)
+    }
+}
 
 Loading.install = function(Vue){
     Vue.prototype.$loading = Loading;
+    Vue.directive(directive.name,directive);
 }
-
-console.log(Loading);
-
 
 export default Loading;
 

@@ -13,14 +13,15 @@
         </muform>
         <button @click="aa" >验证</button>
         <div class='button-group'>
-            <haobutton small icon='&#xe70a;' @click="bb">按钮</haobutton>
+            <haobutton small icon='&#xe70a;' disabled @click="aa">按钮</haobutton>
+            <haobutton icon='&#xe70a;' @click="aa">按钮</haobutton>
             <haobutton @click="aa" fullWidth icon='&#xe70a;'>按钮</haobutton>
             <haobutton large @click="aa" fullWidth icon='&#xe70a;'>按钮</haobutton>
             <haobutton small flat fab @click="aa" icon='&#xe70a;'>按钮</haobutton>
             <haobutton @click="aa" round flat disabled icon='&#xe70a;'>按钮</haobutton>
             <haobutton large @click="aa" fab disabled icon='&#xe70a;'>按钮</haobutton>
             <haobutton large @click="aa" flat right icon='&#xe70a;'>按钮</haobutton>
-            <haobutton @click="aa" disabled right icon='&#xe70a;'>按钮</haobutton>
+            <haobutton @click="aa" disabled  right icon='&#xe70a;'>按钮</haobutton>
         </div>
         <paging :total='6' :pageSize='1' :butNum='3' :current.sync='value'></paging>
         <paging :total='6' :pageSize='1' flat :butNum='3' :current.sync='value'></paging>
@@ -52,10 +53,6 @@
     import paging from './components/Paging';
     import numberinput from './components/numberInput';
     export default {
-        mounted () {
-            console.log(this);
-            ;
-        },
         components : {
            alertForm,
            muform,
@@ -71,6 +68,7 @@
             return {
                 show : false,
                 checkboxValue : [],
+                loading : true,
                 input : 4,
                 value : 0,
                 testValue : '',
@@ -125,7 +123,6 @@
             },
             aa(e){
                 this.$refs.form.validate().then((item)=>{
-                    console.log(item);
                     
                 })
             },

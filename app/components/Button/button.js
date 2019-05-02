@@ -37,15 +37,34 @@ export default {
         right : {
             type : Boolean,
             default : false,
+        },
+        loading : {
+            type : Boolean,
+            default : false,
         }
     },
     methods : {
-        iconPosition(h) {
+        createIcon(h) {
             if(!this.icon) return [ this.$scopedSlots.default() ];
             if(this.right) return [ this.$scopedSlots.default() , h(Icon,{ props : { value : this.icon } }) ];
             return [ h(Icon,{ props : { value : this.icon } }) , this.$scopedSlots.default() ];
         },
+        createLoading(h) {
+            let loading = h('div',{
+                staticClass : 'loading-box'
+            },[
+                h('div',{
+                    staticClass : 'button-loading'
+                })
+            ]);
+            let span = h('span',{
+                staticClass : 'loading-text'
+            },'加载中')
+            if(this.right) return [ span , loading ];
+            return [ loading , span ];
+        },
         click(e) {
+            if(this.disabled || this.loading) return;
             this.$emit('click',e)
         }
     },
@@ -58,7 +77,7 @@ export default {
                 'hao-button-round' : this.round,
                 'hao-button-fab' : this.fab,
                 'hao-button-flat' : this.flat,
-                'hao-button-disabled' : this.disabled,
+                'hao-button-disabled' : this.disabled || this.loading,
                 'hao-button-full-width' : this.fullWidth
             },
             attrs : {
@@ -67,8 +86,7 @@ export default {
             },
             on : {
                 click : this.click,
-                ...this.$listeners
             }
-        },this.iconPosition(h))
+        },this.loading ? this.createLoading(h) : this.createIcon(h))
     }
 }
