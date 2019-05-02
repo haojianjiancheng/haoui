@@ -1,3 +1,15 @@
+@normal_width : 32px;
+@normal_height : 32px;
+@normal_bc : rgb(42, 186, 235);
+@normal_text_color : pink;
+
+@small_width : 24px;
+@small_height : 24px;
+
+@focus_text_color : blue;
+@disabled_text_color : red;
+@disabled_bc : lightgray;
+
 .paging{
     padding-left: 0;
     margin: 0;
@@ -5,28 +17,29 @@
         list-style: none;
         position: relative;
         padding: 4px;
-        width: 32px;
-        height: 32px;
-        line-height: 32px;
+        width: @normal_width;
+        height: @normal_height;
+        line-height: @normal_height;
         margin-left: 4px;
         display: inline-block;
         vertical-align: middle;
         cursor: pointer;
         user-select: none;
         text-align: center;
-        background-color: blue;
+        color: @normal_text_color;
+        background-color: @normal_bc;
     }
     .paging-num-small{
-        width: 24px;
-        height: 24px;
-        line-height: 24px;
-        background-color: inherit;
+        width: @small_width;
+        height: @small_height;
+        line-height: @small_height;
+        background-color: @normal_bc;
         &.disabled{
-            color: lightgray;
-            background-color: inherit;
+            color: @disabled_text_color;
+            background-color: @disabled_bc;
         }
         &.is-current{
-            color: blue;
+            color: @focus_text_color;
         }
     }
     .paging-num-fab{
@@ -35,11 +48,11 @@
     .paging-num-flat{
         background-color: inherit;
         &.disabled{
-            color: lightgray;
+            color: @disabled_text_color;
             background-color: inherit;
         }
         &.is-current{
-            color: blue;
+            color: @focus_text_color;
         }
     }
     .paging-num-circle{
@@ -47,11 +60,11 @@
     }
     .disabled{
         cursor: not-allowed;
-        color: #fff;
-        background-color: lightgray;
+        color: @disabled_text_color;
+        background-color: @disabled_bc;
     }
     .is-current{
-        color: #fff;
+        color: @focus_text_color;
     }
 }
 .svg-icon{

@@ -24,7 +24,7 @@
             <haobutton @click="aa" disabled  right icon='&#xe70a;'>按钮</haobutton>
         </div>
         <paging :total='6' :pageSize='1' :butNum='3' :current.sync='value'></paging>
-        <paging :total='6' :pageSize='1' flat :butNum='3' :current.sync='value'></paging>
+        <paging :total='6' :pageSize='1' small :butNum='3' :current.sync='value'></paging>
         <paging :total='6' :pageSize='1' circle :butNum='3' :current.sync='value'></paging>
         <paging :total='6' :pageSize='1' fab circle :butNum='3' :current.sync='value'></paging>
         <paging :total='6' :pageSize='1' fab :butNum='3' :current.sync='value'></paging>
