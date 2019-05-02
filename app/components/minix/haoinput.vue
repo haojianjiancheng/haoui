@@ -49,19 +49,24 @@
 </script>
 
 <style lang="less" scoped>
+@input_width : 257px;
+@innput_height : 34px;
+@error_border_color : red;
+@focus_border_color : lightblue;
+
 .hao-input{
     outline: none;
     border: 1px solid lightgray;
-    width: 257px;
-    height: 34px;
+    width: @input_width;
+    height: @innput_height;
     border-radius: 4px;
-    padding-left: 4px;
-    padding-right: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .hao-input-focuse{
-    border-color: lightblue;
+    border-color: @focus_border_color;
 }
 .hao-input-error{
-    border-color: red;
+    border-color: @error_border_color;
 }
 </style>

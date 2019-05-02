@@ -1,20 +1,28 @@
+@form_item_width : 367px;
+@text_color : black;
+
+@label_width : 90px;
+@label_height : 38px;
+@error_text_color : #ee4b4b;
+
 .form-item{
     display: flex;
+    color: @text_color;
     position: relative;
-    width: 367px;
+    width: @form_item_width;
     padding-bottom: 16px;
 }
 .form-item-top{
     flex-direction: column;
 }
 .form-item-error{
-    color: red;
+    color: @error_text_color;
 }
 
 .form-item-label{
-    width: 90px;
-    height: 38px;
-    line-height: 38px;
+    width: @label_width;
+    height: @label_height;
+    line-height: @label_height;
     padding-right: 10px;
 }
 .form-item-label-left{
