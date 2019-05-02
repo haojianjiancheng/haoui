@@ -14,6 +14,7 @@
     - [x] fab
     - [x] flat
     - [x] disabled
+    - [x] loading
 * icon
     - [x] value
 * form
@@ -67,6 +68,7 @@
     fab | 浮动（按钮阴影）| Boolean | - |false
     flat | 扁平 | Boolean | - | false
     disabled | 禁用 | Boolean | - | false
+    loading | 载入中... | Boolean | - | false
 
 ### icon
 * props 
