@@ -1,23 +1,37 @@
+@input_width : 258px;
+@input_height : 38px;
+@label_width : 60px; 
+@input_border_color : lightgray;
+@focus_border_color : blue;
+
+@button_icon_color : #fff;
+@button_bc : lightblue;
+@button_hover_border_color : blue;
+@button_hover_icon_color : yellow;
+
+@disabled_button_bc : gray;
+@disabled_button_icon_color : #fff;
+
 .number-box{
     position: relative;
-    width: 258px;
-    height: 38px;
+    width: @input_width;
+    height: @input_height;
     .number-input{
         outline: none;
-        border: 1px solid lightgray;
-        width: 190px;
+        border: 1px solid @input_border_color;
+        width: @input_width - @label_width - 10 - 2;
         height: 34px;
         &.prepend{
-            padding-left: 66px;
+            padding-left: @label_width + 10;
             border-radius: 4px;
         }
         &.append{
-            width: 246px;
+            width: @input_width - 10 - 2;
             padding-left: 10px;
             border-radius: 4px;
         }
         &:focus{
-            border-color: lightblue;
+            border-color: @focus_border_color;
         }
         &.disabled{
             cursor: not-allowed;
@@ -27,47 +41,47 @@
         position: absolute;
         top: 1px;
         overflow: hidden;
-        width: 55px;
-        height: 36px;
+        color: @button_icon_color;
+        width: @label_width;
+        height: @input_height - 2;
         text-align: center;
-        line-height: 36px;
-        background-color: lightblue;
+        line-height: @input_height - 2;
+        background-color: @button_bc;
         user-select: none;
         .label-span{
             position: absolute;
             left: 0;
             overflow: hidden;
-            width: 55px;
+            width: @label_width;
             border-left: 1px solid #fff;
             cursor: pointer;
             .svg-icon{
-                color: #fff;
+                color: @button_icon_color;
             }
             &:hover{
                 .svg-icon{
-                    color : blue;
+                    color : @button_hover_icon_color;
                 }
             }
             &.disabled{
                 cursor: not-allowed;
                 .svg-icon{
-                    color: #fff;
+                    color: @disabled_button_icon_color;
                 }
             }
         }
         .label-top{
             top: 0;
-            height: 19px;
+            height: @input_height / 2 - 1;
             transform: rotateX(180deg);  
         }
         .label-bottom{
             bottom: 0;
-            height: 18px;
+            height: @input_height / 2 - 2;
             border-top: 1px solid #fff;
         }
         &.disabled{
-            background-color: lightgray;
-            color: #fff;
+            background-color: @disabled_button_bc;
             cursor: not-allowed;
         }
     }
@@ -75,23 +89,23 @@
         right: 1px;
         border-radius: 0 3px 3px 0;
         &.disabled{
-            color: #fff;
+            color: @disabled_button_icon_color;
         }
         &:hover +.number-input{
-            border-color: blue;
+            border-color: @button_hover_border_color;
         }
     }
     .prepend-box{
         left: 1px;
         border-radius: 3px 0 0 3px;
         &.disabled{
-            color: #fff;
+            color: @disabled_button_icon_color;
         }
         &:hover ~.number-input{
-            border-color: blue;
+            border-color: @button_hover_border_color;
         }
     }
     .normal:hover{
-        color: blue;
+        color: @button_hover_icon_color;
     }
 }
