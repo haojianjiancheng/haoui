@@ -47,7 +47,7 @@ export default {
             if(!this.rules || this.rules.length == 0) return true;
             let promise = [];
             let promiseMessage = [];
-            let validateResult = this.rules.some((item)=>{
+            let validateResult = this.rules.some((item)=>{                
                 let result = item.validate(this.form.getVal(this.prop));
                 if(typeof result.then === 'function'){
                     promise.push(result);
@@ -58,16 +58,16 @@ export default {
                 return !result
             },this);
             if(promise.length === 0) return !validateResult
-            if(promise.length > 0){                
-                return Promise.all(promise).then((result)=>{            
+            if(promise.length > 0){        
+                return Promise.all(promise).then((result)=>{           
                     for (let i = 0; i < result.length; i++) {
                         if(!result[i]){
                             this.updateError(promiseMessage[i]);
                             return Promise.reject(false);
                         }
-                        this.updateError('');
-                        return true
                     }
+                    this.updateError('');
+                    return true;
                 })
             }
             this.updateError('');

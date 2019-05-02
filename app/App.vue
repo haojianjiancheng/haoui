@@ -13,7 +13,7 @@
         </muform>
         <button @click="aa" >验证</button>
         <div class='button-group'>
-            <haobutton small icon='&#xe70a;' @click="aa">按钮</haobutton>
+            <haobutton small icon='&#xe70a;' @click="bb">按钮</haobutton>
             <haobutton @click="aa" fullWidth icon='&#xe70a;'>按钮</haobutton>
             <haobutton large @click="aa" fullWidth icon='&#xe70a;'>按钮</haobutton>
             <haobutton small flat fab @click="aa" icon='&#xe70a;'>按钮</haobutton>
@@ -38,12 +38,6 @@
         <numberinput v-model="input" :min='1' :max='30' prepend='dj'></numberinput>
         <numberinput v-model="input" :min='1' :max='30' ></numberinput>
         <numberinput v-model="input" :min='1' :max='30' disabled></numberinput>
-
-        <button @click="bb">清空</button>
-        <appbar>
-            <icon value="&#xe70b;"></icon>
-        </appbar>
-        <icon value="&#xe70a;"></icon>
     </div>
 </template>
 
@@ -58,6 +52,10 @@
     import paging from './components/Paging';
     import numberinput from './components/numberInput';
     export default {
+        mounted () {
+            console.log(this);
+            ;
+        },
         components : {
            alertForm,
            muform,
@@ -97,24 +95,26 @@
                     // {validate : (item) => /^\d+$/.test(item), message : '都是数字才行'},
                     {
                         validate : (item,prop) =>{
-                            return new Promise ((res,rej)=>{
-                                setTimeout(() => {
+                            return new Promise ((res)=>{
+                                if (!item){
+                                    res(false)
+                                }else{
                                     res(true)
-                                }, 1000);
+                                }
                             })
                         },
                         message :"错误的"
                     },{
                         validate : (item,prop) =>{
                             return new Promise ((res)=>{
-                                if (item == '3'){
-                                    res(true)
-                                }else{
+                                if(item.length < 10){
                                     res(false)
+                                }else{
+                                    res(true)
                                 }
                             })
                         },
-                        message : "cuowu"
+                        message : "长度不够"
                     }
                 ]
             }
@@ -126,6 +126,7 @@
             aa(e){
                 this.$refs.form.validate().then((item)=>{
                     console.log(item);
+                    
                 })
             },
             bb(e){
@@ -144,6 +145,7 @@
 
 <style lang="less" scoped>
     #app{
+        position: relative;
        .button-group{
            display: flex;
            flex-direction: column;
