@@ -1,5 +1,5 @@
 # haoui
-插件库
+## 插件库
 * loading
     - [x] size
     - [x] text
@@ -30,7 +30,7 @@
     data-loading-bc | 背景 | String | - | -
     data-loading-color | loading颜色 | String | - | -
 
-组件库
+## 组件库
 * appbar
     - [x] title 
     - [x] slot left
