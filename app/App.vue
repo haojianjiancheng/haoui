@@ -37,7 +37,8 @@
         <numberinput v-model="input" :min='1' :max='30' :decimal='2' append='dj'></numberinput>
         <numberinput v-model="input" :min='1' :max='30' prepend='dj'></numberinput>
         <numberinput v-model="input" :min='1' :max='30' ></numberinput>
-        <numberinput v-model="input" :min='1' :max='30' disabled></numberinput>
+        <numberinput v-model="input" v-lazy='aa' :min='1' :max='30' disabled></numberinput>
+        <img v-lazy='"./style/1.jpg"' alt="">
     </div>
 </template>
 
