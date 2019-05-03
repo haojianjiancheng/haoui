@@ -9,6 +9,7 @@
 
 ### loading 
 * options
+
     参数 | 作用 | 类型 | 可选值 | 默认值
     --- | --- | --- | :---: | :---:  
     size | loading的大小 | Number | - | -
@@ -20,6 +21,7 @@
     this.$loading返回一个对象。包括instance：loading的实例，close关闭loading的方法
 
 * v-loading所在标签的data应用
+
     参数 | 作用 | 类型 | 可选值 | 默认值
     --- | --- | --- | :---: | :---:  
     data-loading-size | loading的大小 | Number | - | -
