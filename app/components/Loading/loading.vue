@@ -1,5 +1,5 @@
 <template>
-    <div class="loading-box" :style="style" @click.stop>
+    <div :class="['loading-box',{ 'fixed' : this.fixed }]" @click.stop>
         <div class="loading-inner">
             <div class="loading"></div>
         </div>
@@ -9,13 +9,9 @@
 <script>
     export default {
         props : {
-            width : {
-                default : '100%',
-                type : String
-            },
-            height : {
-                default : '100%',
-                type : String
+            fixed : {
+                type : Boolean,
+                default : false
             }
         },
         data() {
@@ -38,12 +34,15 @@
     bottom: 0;
     right: 0;
     background-color: rgba(0,0,0,.5);
-    .loading-inner{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-    }
+}
+.fixed{
+    position: fixed;
+}
+.loading-inner{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 .loading{
     width: 10px;

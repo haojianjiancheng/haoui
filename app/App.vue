@@ -20,11 +20,11 @@
             <haobutton @click="aa" round flat disabled icon='&#xe70a;'>按钮</haobutton>
             <haobutton large @click="aa" fab disabled icon='&#xe70a;'>按钮</haobutton>
             <haobutton large @click="aa" flat right icon='&#xe70a;'>按钮</haobutton>
-            <haobutton @click="aa" disabled  right icon='&#xe70a;'>按钮</haobutton>
+            <haobutton @click="change" right icon='&#xe70a;'>按钮</haobutton>
         </div>
         <paging :total='6' :pageSize='1' :butNum='3' :current.sync='value'></paging>
         <paging :total='6' :pageSize='1' small :butNum='3' :current.sync='value'></paging>
-        <paging :total='6' :pageSize='1' circle :butNum='3' :current.sync='value'></paging>
+        <paging :total='6' :pageSize='1'  v-loading='loading' circle :butNum='3' :current.sync='value'></paging>
         <paging :total='6' :pageSize='1' fab circle :butNum='3' :current.sync='value'></paging>
         <paging :total='6' :pageSize='1' fab :butNum='3' :current.sync='value'></paging>
         <paging :total='6' :pageSize='1' small :butNum='3' round :current.sync='value'></paging>
@@ -33,7 +33,7 @@
         <paging :total='6' :pageSize='1' flat fab small :butNum='3' round :current.sync='value'></paging>
         <paging :total='6' :pageSize='1' flat fab circle :butNum='3' round :current.sync='value'></paging>
         <paging :total='6' :pageSize='1' flat fab circle small :butNum='3' round :current.sync='value'></paging> {{value}}
-        <numberinput v-model="input"  v-loading='true' :min='1' number :max='5' @change="change"></numberinput> {{input}}
+        <numberinput v-model="input"  :min='1' number :max='5' @change="change"></numberinput> {{input}}
         <numberinput v-model="input" :min='1' :max='30' :decimal='2' append='dj'></numberinput>
         <numberinput v-model="input" :min='1' :max='30' prepend='dj'></numberinput>
         <numberinput v-model="input" :min='1' :max='30' ></numberinput>
@@ -85,7 +85,7 @@
                 screenValue : {
                     name : '22',
                     number : '',
-                    result : ''
+                    result : '',
                 },
                 rule : [
                     // {validate : (item) => item.length>2 && item.length<10,message : "长度不够"},
@@ -131,9 +131,8 @@
             push(value){
                 this.value = value
             },
-            change(value){
-                console.log(value);
-                
+            change(){
+                this.loading = !this.loading;
             }
         }
     }

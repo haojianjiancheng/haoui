@@ -5,9 +5,9 @@ import defaultConfig from './config.js'
 let LoadingConstructor = Vue.extend(loadingOriginal);
 let config = defaultConfig;
 const isServer = typeof window === 'undefined';
+
 let Loading = function (options = {}){
     console.log(options);
-    
     if (isServer) return;
     const target = options.target && typeof options.target.appendChild === 'function' ? options.target : document.body;
     if(target._loading) return;
@@ -15,6 +15,7 @@ let Loading = function (options = {}){
         el : document.createElement('div'),
         propsData : {
             ...config,
+            fixed : !options.target,
             ...options,
         }
     });
@@ -36,6 +37,7 @@ let Loading = function (options = {}){
         }
     }
 };
+
 const toggleLoading = function(el,isLoading){
     if(isLoading){
         const options = {
@@ -54,21 +56,26 @@ const toggleLoading = function(el,isLoading){
         el._loading = null;
     }
 }
+
 const directive = {
     name : 'loading',
-    inserted (el,{value}){
-       toggleLoading(el,value)
-        
+    inserted (el,{ value }){
+        toggleLoading(el,value)
+    },
+    update (el,{ value }){
+        toggleLoading(el,value)
+    },
+    unbind(el){
+        toggleLoading(el,false)
     }
 }
+
 Loading.config = function(options){
     config = {...defaultConfig,...options}
 }
 
 Loading.install = function(Vue,options){
     Loading.config(options);
-    console.log(config);
-    
     Vue.prototype.$loading = Loading;
     Vue.directive(directive.name,directive);
 }
