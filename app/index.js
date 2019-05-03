@@ -7,9 +7,7 @@ Vue.use(Loading,{
     size : 20,
     color : 'red'
 });
-Vue.use(Lazy,{
-    error : '33'
-})
+Vue.use(Lazy)
 
 new Vue ({
     el : '#app',

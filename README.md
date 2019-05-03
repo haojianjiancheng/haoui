@@ -6,8 +6,11 @@
     - [x] className
     - [x] bc
     - [x] color
-
+* lazy
+    - [x] error
+    - [x] loading
 ### loading 
+    接受一个Boolean，`true`显示loading，`false`隐藏loading。
 * options
 
     参数 | 作用 | 类型 | 可选值 | 默认值
@@ -20,7 +23,7 @@
 
     this.$loading返回一个对象。包括instance：loading的实例，close关闭loading的方法
 
-* v-loading所在标签的data应用
+* v-loading所在标签的`data-`
 
     参数 | 作用 | 类型 | 可选值 | 默认值
     --- | --- | --- | :---: | :---:  
@@ -29,6 +32,18 @@
     data-loading-className | loading的className | String | - | -
     data-loading-bc | 背景 | String | - | -
     data-loading-color | loading颜色 | String | - | -
+
+### lazy
+    接受一个String，图片地址。
+* options
+
+    参数 | 作用 | 类型 | 可选值 | 默认值
+    --- | --- | --- | :---: | :---:  
+    width | 宽度 | Number | - | -
+    height | 高度 | Number | - | -
+    error | 加载失败显示图片 | String | - | -
+    loading | 加载中显示图片 | String | - | -
+
 
 ## 组件库
 * appbar
