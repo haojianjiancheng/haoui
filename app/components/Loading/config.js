@@ -1,6 +1,7 @@
 export default {
-    size : 49,
-    bc : 'black',
+    size : 10,
     color : 'red',
-    className : ''
+    className : '11',
+    bc : 'rgba(0,0,0,.5)',
+    text : '加载中'
 }

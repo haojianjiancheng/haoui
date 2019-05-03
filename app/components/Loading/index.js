@@ -7,7 +7,6 @@ let config = defaultConfig;
 const isServer = typeof window === 'undefined';
 
 let Loading = function (options = {}){
-    console.log(options);
     if (isServer) return;
     const target = options.target && typeof options.target.appendChild === 'function' ? options.target : document.body;
     if(target._loading) return;

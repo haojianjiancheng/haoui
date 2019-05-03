@@ -4,7 +4,8 @@ import Loading from './components/Loading';
 
 Vue.use(Loading,{
     b:2,
-    size : 1
+    size : 10,
+    color : 'red'
 });
 
 new Vue ({
