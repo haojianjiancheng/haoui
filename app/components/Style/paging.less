@@ -11,8 +11,10 @@
 @disabled_bc : lightgray;
 
 .paging{
+    position: relative;
     padding-left: 0;
     margin: 0;
+    width: max-content;
     li{
         list-style: none;
         position: relative;
@@ -28,6 +30,9 @@
         text-align: center;
         color: @normal_text_color;
         background-color: @normal_bc;
+    }
+    li:first-child{
+        margin-left: 0;
     }
     .paging-num-small{
         width: @small_width;

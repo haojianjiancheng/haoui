@@ -67,5 +67,7 @@
 </script>
 
 <style lang="less" scoped>
-
+.form{
+    position: relative;
+}
 </style>
