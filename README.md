@@ -1,4 +1,33 @@
 # haoui
+插件库
+* loading
+    - [x] size
+    - [x] text
+    - [x] className
+    - [x] bc
+    - [x] color
+
+### loading 
+* options
+    参数 | 作用 | 类型 | 可选值 | 默认值
+    --- | --- | --- | :---: | :---:  
+    size | loading的大小 | Number | - | -
+    text | loading下面的文字说明 | String | - | -
+    className | loading的className | String | - | -
+    bc | 背景 | String | - | -
+    color | loading颜色 | String | - | -
+
+    this.$loading返回一个对象。包括instance：loading的实例，close关闭loading的方法
+
+* v-loading所在标签的data应用
+    参数 | 作用 | 类型 | 可选值 | 默认值
+    --- | --- | --- | :---: | :---:  
+    data-loading-size | loading的大小 | Number | - | -
+    data-loading-text | loading下面的文字说明 | String | - | -
+    data-loading-className | loading的className | String | - | -
+    data-loading-bc | 背景 | String | - | -
+    data-loading-color | loading颜色 | String | - | -
+
 组件库
 * appbar
     - [x] title 

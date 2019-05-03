@@ -3,8 +3,7 @@ import App from './App';
 import Loading from './components/Loading';
 
 Vue.use(Loading,{
-    b:2,
-    size : 10,
+    size : 20,
     color : 'red'
 });
 
