@@ -27,6 +27,7 @@
     "postcss-loader": "^3.0.0",
     "url-loader": "^1.1.2",
     "vue-loader": "^15.7.0",
+    "vue-router": "^3.0.6",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.30.0",

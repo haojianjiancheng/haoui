@@ -1,152 +1,58 @@
 <template>
     <div id="app">
-        <input type="text" v-model="value">
-        <button @click="eject">按钮</button>
-        <alertForm v-if="show" @check='push' :rowNum='5' :tableValue='tableValue' :screenValue="screenValue" :termNum='9' :butNum='3' v-model="screenValue"></alertForm>
-        <muform ref="form" :model="screenValue">
-            <form-item prop='name' label="用户名" labelPosition='left' :rules='rule' helpText="请输入用户名">
-                <haoinput type="text" v-model="screenValue.name"></haoinput>
-            </form-item>
-            <form-item prop='number' label="编号" :rules='rule' helpText="请输入密码">
-                <haoinput type="text" v-model="screenValue.number"></haoinput>
-            </form-item>
-        </muform>
-        <div class='button-group'>
-            <haobutton small icon='&#xe70a;' disabled @click="aa">按钮</haobutton>
-            <haobutton icon='&#xe70a;' @click="aa">按钮</haobutton>
-            <haobutton @click="aa" fullWidth icon='&#xe70a;'>按钮</haobutton>
-            <haobutton large @click="aa" fullWidth icon='&#xe70a;'>按钮</haobutton>
-            <haobutton small flat fab @click="aa" icon='&#xe70a;'>按钮</haobutton>
-            <haobutton @click="aa" round flat disabled icon='&#xe70a;'>按钮</haobutton>
-            <haobutton large @click="aa" fab disabled icon='&#xe70a;'>按钮</haobutton>
-            <haobutton large @click="aa" flat right icon='&#xe70a;'>按钮</haobutton>
-            <haobutton @click="change" right icon='&#xe70a;'>按钮</haobutton>
+        <div class='large'>
+            这是个非常长的div
         </div>
-        <paging :total='6' :pageSize='1' :butNum='3' :current.sync='value'></paging>
-        <paging :total='6' :pageSize='1' small :butNum='3' :current.sync='value'></paging>
-        <paging :total='6' :pageSize='1'  v-loading='loading' circle :butNum='3' :current.sync='value'></paging>
-        <paging :total='6' :pageSize='1' fab circle :butNum='3' :current.sync='value'></paging>
-        <paging :total='6' :pageSize='1' fab :butNum='3' :current.sync='value'></paging>
-        <paging :total='6' :pageSize='1' small :butNum='3' round :current.sync='value'></paging>
-        <paging :total='6' :pageSize='1' flat circle :butNum='3' round :current.sync='value'></paging>
-        <paging :total='6' :pageSize='1' flat fab :butNum='3' round :current.sync='value'></paging>
-        <paging :total='6' :pageSize='1' flat fab small :butNum='3' round :current.sync='value'></paging>
-        <paging :total='6' :pageSize='1' flat fab circle :butNum='3' round :current.sync='value'></paging>
-        <paging :total='6' :pageSize='1' flat fab circle small :butNum='3' round :current.sync='value'></paging> {{value}}
-        <numberinput v-model="input"  :min='1' number :max='5' @change="change"></numberinput> {{input}}
-        <numberinput v-model="input" :min='1' :max='30' :decimal='2' append='dj'></numberinput>
-        <numberinput v-model="input" :min='1' :max='30' prepend='dj'></numberinput>
-        <numberinput v-model="input" :min='1' :max='30' ></numberinput>
-        <numberinput v-model="input" v-lazy='aa' :min='1' :max='30' disabled></numberinput>
-        <img v-lazy='"./style/1.jpg"' alt="">
+        <lazyCom :timeout='3000' :tag='"div"' :name='"fade"'>
+            <div class="aa" key="1">
+                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556894132780&di=2327878576b7920e16b8afed7b23ba0a&imgtype=0&src=http%3A%2F%2Ft8.baidu.com%2Fit%2Fu%3D3660968530%2C985748925%26fm%3D191%26app%3D48%26wm%3D1%2C17%2C90%2C45%2C20%2C7%26wmo%3D0%2C0%26n%3D0%26g%3D0n%26f%3DJPEG%3Fsec%3D1853310920%26t%3D9b4f100f0eedfe853fad24a58a4e1ad7" alt="" srcset="">
+            </div>
+            <div class="aa" key="2">
+                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556894132778&di=a6f04fd16fa96a683cb930453e0e8123&imgtype=0&src=http%3A%2F%2Fpic7.nipic.com%2F20100513%2F4912930_151108169809_2.jpg" alt="" srcset="">
+            </div>
+        </lazyCom>
+        <router-link to="/test">LinkTitle</router-link>
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
-    import alertForm from "./components/alertForm";
-    import muform from './components/Form';
-    import formItem from './components/FormItem';
-    import haoinput from './components/minix/haoinput.vue';
-    import haobutton from './components/Button';
-    import appbar from './components/Appbar';
-    import icon from './components/Icon';
-    import paging from './components/Paging';
-    import numberinput from './components/numberInput';
+    import lazyCom from './components/lazyModular';
     export default {
         components : {
-           alertForm,
-           muform,
-           formItem,
-           haoinput,
-           haobutton,
-           appbar,
-           icon,
-           paging,
-           numberinput
+            lazyCom,
         },
-        data(){
+        data() {
             return {
-                show : false,
-                checkboxValue : [],
-                loading : true,
-                input : 4,
-                value : 0,
-                testValue : '',
-                tableValue : [
-                    ["张三",34,91],
-                    ["张三",10,91],
-                    ["张三",40,91],
-                    ["李四",3003,33],
-                    ["王五",3838,38],
-                    ["老三",340,91],
-                    ["张饿",41,91],
-                    ["李比",31,33],
-                    ["另五",39,38],
-                ],
-                screenValue : {
-                    name : '22',
-                    number : '',
-                    result : '',
-                },
-                rule : [
-                    // {validate : (item) => item.length>2 && item.length<10,message : "长度不够"},
-                    // {validate : (item) => /^\d+$/.test(item), message : '都是数字才行'},
-                    {
-                        validate : (item,prop) =>{
-                            return new Promise ((res)=>{
-                                if (!item){
-                                    res(false)
-                                }else{
-                                    res(true)
-                                }
-                            })
-                        },
-                        message :"错误的"
-                    },{
-                        validate : (item,prop) =>{
-                            return new Promise ((res)=>{
-                                if(item.length < 10){
-                                    res(false)
-                                }else{
-                                    res(true)
-                                }
-                            })
-                        },
-                        message : "长度不够"
-                    }
-                ]
+                show : false
             }
         },
-        methods : {
-            eject (e){
-                this.show = !this.show;
-            },
-            aa(e){
-                this.$refs.form.validate().then((item)=>{
-                    
-                })
-            },
-            bb(e){
-                this.$refs.form.clean()
-            },
-            push(value){
-                this.value = value
-            },
-            change(){
-                this.loading = !this.loading;
+        methods: {
+            change() {
+                this.show = !this.show
             }
-        }
+        },
     }
 </script>
 
 <style lang="less" scoped>
     #app{
         position: relative;
-       .button-group{
-           display: flex;
-           flex-direction: column;
-           justify-content: center;
-           align-items: center
-       }
+        .large{
+            height: 700px;
+            width: 400px;
+            background-color: red;
+        }
+        .fade-enter-active,.fade-leave-active{
+            transition: opacity 9s;
+        }
+        .fade-enter,.fade-leave-to{
+            opacity: 0;
+        }
+        .aa{
+            width: 500px;
+            height: 400px;
+            overflow: hidden;
+        }
     }
 </style>

@@ -13,7 +13,6 @@ function loadImg (el,options,url,observer){
 function mix (defaultConfig,options){
     return { ...defaultConfig,...options }
 }
-
 export function lazy (defaultConfig) {
     return function (Vue,options) {
         let config = mix(defaultConfig,options);
