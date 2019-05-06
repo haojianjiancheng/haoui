@@ -149,6 +149,7 @@
     名称 | 作用 | 参数
     --- | --- | :---:
     validate | 表单验证（返回一个Promise） | -
+    clean | 清除所有表单错误 | -
 
 ### formItem
 * props
