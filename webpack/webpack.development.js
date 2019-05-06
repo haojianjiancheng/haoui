@@ -4,6 +4,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
+    output : {
+        filename : "[name].[hash].bundle.js"
+    },
     module : {
         rules : [
             {

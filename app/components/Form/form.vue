@@ -55,7 +55,7 @@
                 if(promise.length>0){
                     return Promise.all ([end ? Promise.resolve(end) : Promise.reject(end),...promise]).then(()=>true,()=>false);
                 }
-                return promise.resolve(end);
+                return Promise.resolve(end);
             },
             clean() {
                 this.items.forEach(item=>{

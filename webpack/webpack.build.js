@@ -3,6 +3,9 @@ const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
+    output : {
+        filename : "[name].[chunkhash].bundle.js"
+    },
     module : {
         rules : [
             {
@@ -20,7 +23,23 @@ const config = {
         new MiniCssExtractPlugin({
             filename : 'style.css',
         })
-    ]
+    ],
+    optimization : {
+        splitChunks : {
+            chunks : 'all',
+            cacheGroups : {
+                libs : {
+                    test : /[\\/]node_modules[\\/]/,
+                    priority : -10
+                },
+                commons : {
+                    minChunks : 2,
+                    priority : -20,
+                    reuseExistingChunk : true
+                }
+            }
+        }
+    }
 }
 
 module.exports = merge(config,common)

@@ -12,7 +12,9 @@
             </div>
         </lazyCom>
         <router-link to="/test">LinkTitle</router-link>
+        <router-link to="/home">LinkTitle</router-link>
         <router-view></router-view>
+
     </div>
 </template>
 
