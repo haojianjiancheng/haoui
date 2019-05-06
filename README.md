@@ -6,9 +6,10 @@
     - [x] className
     - [x] bc
     - [x] color
-* lazy
+* lazyImg
     - [x] error
     - [x] loading
+
 ### loading 
     接受一个Boolean，`true`显示loading，`false`隐藏loading。
 * options
@@ -33,7 +34,7 @@
     data-loading-bc | 背景 | String | - | -
     data-loading-color | loading颜色 | String | - | -
 
-### lazy
+### lazyImg
     接受一个String，图片地址。
 * options
 
@@ -83,6 +84,12 @@
     - [x] pageSize
     - [x] current
     - [x] butNum
+* lazyModular
+    - [x] view
+    - [x] threshold
+    - [x] tag
+    - [x] name
+    - [x] timeout
 * minix
     * haoinput
         - [x] type
@@ -195,3 +202,14 @@
     名称 | 作用 | 回调
     --- | --- | ---
     change | 当前数字改变触发（返回当前数字） | -
+
+### lazyModular
+* props 
+
+     参数 | 作用 | 类型 | 可选值 | 默认值
+    --- | --- | --- | :---: | :---: 
+    view | 相对视口 | HTMLElement | - | null
+    threshold | 懒加载阈值 | String | - | 0px
+    tag | 包裹组件的标签名 | String | - | div
+    name | transition-group的name | String | - | -
+    timeout | 等待时间。如果设置等待时间，模块还没到视口，但是过了等待时间，一样会加载 | Number | - | -
