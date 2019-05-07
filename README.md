@@ -216,3 +216,37 @@
     tag | 包裹组件的标签名 | String | - | div
     name | transition-group的name | String | - | -
     timeout | 等待时间。如果设置等待时间，模块还没到视口，但是过了等待时间，一样会加载 | Number | - | -
+* event
+
+    名称 | 作用 | 回调
+    --- | --- | ---
+    change | 当前组件显示时触发（返回true） | -
+* scope-slot
+
+    参数 | 作用
+    --- | ---
+    show(返回true) | 异步组件+webpack分包时使用
+例子：
+```HTML
+<lazyCom :timeout='3000' :tag='"div"' :name='"fade"'>
+    <template v-slot='scope'>
+        <!--异步组件-->
+        <!--异步组件已经可以达到webpack分包的目的-->
+        <paper key="1" v-if='scope.show'>
+        <!--如果不用作用域插槽的参数控制加载，即使分包了，在页面载入的时候，也会加载分包的文件。并不能达到按需加载或懒加载-->
+        <!-- 必须加上v-if 才能达到js文件和css文件按需加载或懒加载-->
+            <div class="aa" >
+                <!-- 内容 -->
+            </div>
+        </paper>
+    </template>
+</lazyCom>
+```
+paper组件为异步组件：
+```javaScript
+components : {
+    paper(resolve){
+        require(['./components/paper'],resolve)
+    },
+},
+```

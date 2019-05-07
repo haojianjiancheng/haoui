@@ -1,22 +1,22 @@
-#app[data-v-ca0fdf6e] {
+#app[data-v-ff8586b6] {
   position: relative;
 }
-#app .large[data-v-ca0fdf6e] {
+#app .large[data-v-ff8586b6] {
   height: 700px;
   width: 400px;
   background-color: red;
 }
-#app .fade-enter-active[data-v-ca0fdf6e],
-#app .fade-leave-active[data-v-ca0fdf6e] {
+#app .fade-enter-active[data-v-ff8586b6],
+#app .fade-leave-active[data-v-ff8586b6] {
   -webkit-transition: opacity 9s;
   -o-transition: opacity 9s;
   transition: opacity 9s;
 }
-#app .fade-enter[data-v-ca0fdf6e],
-#app .fade-leave-to[data-v-ca0fdf6e] {
+#app .fade-enter[data-v-ff8586b6],
+#app .fade-leave-to[data-v-ff8586b6] {
   opacity: 0;
 }
-#app .aa[data-v-ca0fdf6e] {
+#app .aa[data-v-ff8586b6] {
   width: 500px;
   height: 400px;
   overflow: hidden;

@@ -1,6 +1,8 @@
 const path = require('path');
 const env = process.env.NODE_ENV ;
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 const config = {
     mode : env,
@@ -64,7 +66,12 @@ const config = {
         ]
     },
     plugins : [
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new HtmlWebpackPlugin({
+            template : path.join(__dirname,"../index.html"),
+            filename : 'index.html',
+            inject : 'body'
+        }),
     ]
 }
 

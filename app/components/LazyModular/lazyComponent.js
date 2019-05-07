@@ -42,7 +42,8 @@ export default {
         },
         changeShow(){
             this.observer.unobserve(this.$el);        
-            this.show = true;            
+            this.show = true;
+            this.$emit('change',this.show);
         }
     },
     render(h) {
@@ -58,7 +59,9 @@ export default {
                 }
             }
         },[
-            this.show &&  defaultSlot()
+            this.show && defaultSlot({
+                show : true
+            })
         ])
     }
 } 

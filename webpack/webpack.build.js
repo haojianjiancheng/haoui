@@ -1,7 +1,7 @@
 const common = require('./webpack.comm.js');
 const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const config = {
     output : {
         filename : "[name].[chunkhash].bundle.js"
@@ -20,6 +20,7 @@ const config = {
         ]
     },
     plugins : [
+        new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename : 'style.css',
         })
