@@ -95,7 +95,9 @@
         - [x] type
         - [x] prop 
 * asyncComponent(方法)
+
     `asyncComponent( component [,loading=null] [,error=null] [,delay=200] [,timeout=3000] )`
+    > 注意：`beforeRouteEnter`，`beforeRouteUpdate`，`beforeRouteLeave`有可能失效。请使用全局守卫或路由级守卫。
     * component 异步组件
     * loading 异步组件加载时使用的组件
     * error 异步组件错误时使用的组件
