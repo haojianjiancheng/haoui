@@ -94,6 +94,14 @@
     * haoinput
         - [x] type
         - [x] prop 
+* asyncComponent(方法)
+    `asyncComponent( component [,loading=null] [,error=null] [,delay=200] [,timeout=3000] )`
+    * component 异步组件
+    * loading 异步组件加载时使用的组件
+    * error 异步组件错误时使用的组件
+    * delay 展示加载时组件的延时时间。默认值是 200 (毫秒)
+    * timeout 如果提供了超时时间且组件加载也超时了，则使用加载失败时使用的组件。默认值是 3000 (毫秒)
+
 
 ### appBar 
 * props
@@ -221,6 +229,10 @@
     名称 | 作用 | 回调
     --- | --- | ---
     change | 当前组件显示时触发（返回true） | -
+* slot
+    
+    参数 | 作用
+    shelves | 加载组件前占位组件
 * scope-slot
 
     参数 | 作用
@@ -229,15 +241,15 @@
 例子：
 ```HTML
 <lazyCom :timeout='3000' :tag='"div"' :name='"fade"'>
+    <div slot='shelves'></div>
+    <!--加载前的显示-->
     <template v-slot='scope'>
         <!--异步组件-->
         <!--异步组件已经可以达到webpack分包的目的-->
         <paper key="1" v-if='scope.show'>
         <!--如果不用作用域插槽的参数控制加载，即使分包了，在页面载入的时候，也会加载分包的文件。并不能达到按需加载或懒加载-->
         <!-- 必须加上v-if 才能达到js文件和css文件按需加载或懒加载-->
-            <div class="aa" >
-                <!-- 内容 -->
-            </div>
+        <!-- 插槽或内容 -->
         </paper>
     </template>
 </lazyCom>

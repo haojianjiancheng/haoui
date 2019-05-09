@@ -29,7 +29,13 @@ const config = {
                 exclude: file => (
                     /node_modules/.test(file) &&
                     !/\.vue\.js/.test(file)
-                )
+                ),
+                options : {
+                    "babelrc" : false,
+                    "plugins" : [
+                        "dynamic-import-webpack"
+                    ]
+                }
             },
             {
                 test : /\.less/,

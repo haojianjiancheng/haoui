@@ -80,4 +80,3 @@ Loading.install = function(Vue,options){
 }
 
 export default Loading;
-

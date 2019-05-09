@@ -16,6 +16,11 @@ const router = new Router({
             path : '/test',
             name : 'test',
             component : test
+        },
+        {
+            path : '/req',
+            name : 'req',
+            component : resolve => require(["../page/require.vue"],resolve)
         }
     ]
 })

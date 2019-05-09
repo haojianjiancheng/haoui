@@ -47,7 +47,6 @@ export default {
         }
     },
     render(h) {
-        const defaultSlot = this.$scopedSlots.default;
         return h('transition-group',{
             props : {
                 name : this.name,
@@ -59,9 +58,9 @@ export default {
                 }
             }
         },[
-            this.show && defaultSlot({
-                show : true
-            })
+            (this.show && this.$scopedSlots.default) ? this.$scopedSlots.default({
+                show : true 
+            }) : this.$scopedSlots.shelves && this.$scopedSlots.shelves()
         ])
     }
 } 

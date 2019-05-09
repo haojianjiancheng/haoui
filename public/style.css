@@ -1,25 +1,82 @@
-#app[data-v-ff8586b6] {
+.loading[data-v-db1f5c58] {
+  position: absolute;
+  top: 0;
+  width: 500px;
+  height: 500px;
+  background-color: orange;
+}
+.loading-text[data-v-db1f5c58] {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 36%;
+  font-size: 40px;
+  color: #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-animation: textenter-data-v-db1f5c58 steps(4, end) 1s infinite;
+  animation: textenter-data-v-db1f5c58 steps(4, end) 1s infinite;
+}
+@-webkit-keyframes textenter-data-v-db1f5c58 {
+from {
+    width: 3em;
+}
+to {
+    width: 7em;
+}
+}
+@keyframes textenter-data-v-db1f5c58 {
+from {
+    width: 3em;
+}
+to {
+    width: 7em;
+}
+}
+
+.error[data-v-a8e77758] {
+  position: absolute;
+  top: 0;
+  width: 400px;
+  height: 500px;
+  background-color: blue;
+  color: #fff;
+}
+
+#app[data-v-7798ea25] {
   position: relative;
 }
-#app .large[data-v-ff8586b6] {
+#app .large[data-v-7798ea25] {
   height: 700px;
   width: 400px;
   background-color: red;
 }
-#app .fade-enter-active[data-v-ff8586b6],
-#app .fade-leave-active[data-v-ff8586b6] {
-  -webkit-transition: opacity 9s;
-  -o-transition: opacity 9s;
-  transition: opacity 9s;
+#app .fade-enter-active[data-v-7798ea25],
+#app .fade-leave-active[data-v-7798ea25] {
+  -webkit-transition: opacity 1s;
+  -o-transition: opacity 1s;
+  transition: opacity 1s;
 }
-#app .fade-enter[data-v-ff8586b6],
-#app .fade-leave-to[data-v-ff8586b6] {
+#app .fade-enter[data-v-7798ea25],
+#app .fade-leave-to[data-v-7798ea25] {
   opacity: 0;
 }
-#app .aa[data-v-ff8586b6] {
+#app .bb[data-v-7798ea25] {
+  position: relative;
+}
+#app .aa[data-v-7798ea25] {
   width: 500px;
   height: 400px;
   overflow: hidden;
+}
+#app .cccc[data-v-7798ea25] {
+  position: absolute;
+  top: 0;
+  width: 400px;
+  height: 500px;
+  background-color: blue;
 }
 
 .loading-box[data-v-2ecbd168] {
