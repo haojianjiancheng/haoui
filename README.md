@@ -232,6 +232,7 @@
 * slot
     
     参数 | 作用
+    --- | ---
     shelves | 加载组件前占位组件
 * scope-slot
 
