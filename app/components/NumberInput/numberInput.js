@@ -1,6 +1,6 @@
 import { createSvg } from '../minix/unit.js'
 export default {
-    name : "numberInput",
+    name : "number-input",
     props : {
         value : '',
         min : {

@@ -1,0 +1,26 @@
+@checked_bc : #2196f3;
+@check_box_width : 14px;
+
+.hao-check-box{
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    width: @check_box_width;
+    height: @check_box_width;
+    line-height: @check_box_width;
+}
+.hao-check{
+    display: none;
+}
+.is-check{
+    color: @checked_bc;
+    animation: change .4s ease-in;
+}
+@keyframes change{
+    from {
+        opacity: 0.2;
+    }
+    to {
+        opacity: 1;
+    }
+}

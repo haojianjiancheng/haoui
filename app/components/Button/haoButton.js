@@ -1,7 +1,7 @@
 import Icon from '../Icon';
 
 export default {
-    name : 'haoButton',
+    name : 'hao-button',
     props : {
         large : {
             type : Boolean,

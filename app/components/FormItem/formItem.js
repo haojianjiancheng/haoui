@@ -1,5 +1,5 @@
 export default {
-    name : 'formItem',
+    name : 'form-item',
     inject : {
         form : {
             default : ''

@@ -4,25 +4,98 @@
         <router-link to="/home">home</router-link>
         <router-link to="/req">req</router-link>
         <router-view></router-view>
-    <table></table>
+
+        <haoTable :list='list'>
+        </haoTable>
+        <checkbox v-model="all" @click="changeAll"></checkbox>
+        <table>
+            
+            <tr v-for="(item,index) in list" :key='index' @click.stop="change(item.id)">
+                <td>
+                    <checkbox :value='item.id' v-model="aa"></checkbox>
+                </td>
+                <td>{{item.date}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.address}}</td>
+                <td>
+                    <haoButton small @click="delet(item)">删除</haoButton>
+                </td>
+            </tr>
+        </table>{{aa}}
+        <table>
+            <tr v-for="item in filter" :key="item.id">
+                <td>{{item.date}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.address}}</td>
+            </tr>
+        </table>
+        <checkbox value='react' v-model="check"></checkbox>
+        <checkbox value='angluar' v-model="check"></checkbox>
+        <checkbox value='vue' v-model="check"></checkbox>{{check}}
+        <input type="checkbox" id="a">
+        <label for="a">33</label>
     </div>
 </template>
 
 <script>
-    import table from './components/table'
+    import haoTable from './components/table';
+    import checkbox from './components/checkbox';
+    import haoButton from './components/Button'
     export default {
         components : {
-            table
+            checkbox,
+            haoButton,
+            haoTable
         },
         data() {
             return {
-                
+                check : [],
+                all: false,
+                aa:[],
+                list: [{
+                    date: '2016-05-02',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                    id: 1,
+                }, {
+                    date: '2016-05-04',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1517 弄',
+                    id: 2
+                }, {
+                    date: '2016-05-01',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1519 弄',
+                    id: 3
+                }, {
+                    date: '2016-05-03',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1516 弄',
+                    id: 4
+                }],
+                filter:[
+
+                ]
             }
         },
         methods: {
-           
-            
+           delet(val){
+               this.list.splice(this.list.indexOf(val),1)
+           },
+            change(i){
+                this.aa.includes(i) ? this.aa.splice(this.aa.indexOf(i),1) : this.aa.push(i);
+            },
+            changeAll(check){
+                check ? this.aa = [1,2,3,4] : this.aa = []
+            }
         },
+        watch : {
+            aa (nVal){
+                this.filter = this.list.filter((item)=>{
+                    return nVal.includes(item.id)
+                })
+            }
+        }
     }
 </script>
 

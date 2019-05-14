@@ -1,5 +1,5 @@
 export default {
-    name : 'lazyComponent',
+    name : 'lazy-component',
     mounted () {
         this.timeout && setTimeout(() => {
             this.changeShow();
