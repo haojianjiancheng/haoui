@@ -31,6 +31,7 @@
         </table>
        <checkbox disabled></checkbox>
         <hao-switch v-model="check" value='vue' label-right='22' label-left='22'></hao-switch>
+        <number-input number v-model="number"></number-input>
         {{check}}
     </div>
 </template>
@@ -40,17 +41,20 @@
     import checkbox from './components/checkbox';
     import haoButton from './components/Button';
     import haoSwitch from './components/Switch';
+    import numberInput from './components/NumberInput'
     export default {
         components : {
             checkbox,
             haoButton,
             haoTable,
-            haoSwitch
+            haoSwitch,
+            numberInput
         },
         data() {
             return {
                 check : false,
                 all: false,
+                number : 2,
                 aa:[],
                 list: [{
                     date: '2016-05-02',

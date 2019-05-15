@@ -1,4 +1,3 @@
-import { createSvg } from '../minix/unit.js'
 export default {
     name : "number-input",
     props : {
@@ -36,14 +35,12 @@ export default {
     },
     methods : {
         updateValue(value) {
-            let reg = /^(-?\d+\.?\d*)$/
-            reg.test(value);
-            let result = RegExp.$1;
-            if(result === 'String') return;
-            if(result < this.min) result = this.min;
-            if(result > this.max) result = this.max;
-            this.$emit('input',this.format(result));
-            this.$emit('change',this.format(result));
+            if(value === '' | value === null) return;
+            if(isNaN(value)) return;
+            if(value < this.min) value = this.min;
+            if(value > this.max) value = this.max;
+            this.$emit('input',this.format(value));
+            this.$emit('change',this.format(value));
         },
         format(value){
             if(this.decimal) return parseFloat(value).toFixed(this.decimal);
@@ -61,14 +58,14 @@ export default {
         createNormal(h,value){
             let className ;
             if(value === '+') {
-                className = 'append-box normal'
+                className = 'number-input-append-box number-input-normal'
             }else{
-                className = 'prepend-box normal'
+                className = 'number-input-prepend-box number-input-normal'
             };
             return h('div',{
-                staticClass : `label ${className}`,
+                staticClass : `number-input-label ${className}`,
                 class : {
-                    'disabled' : this.disabled
+                    'number-input-disabled' : this.disabled
                 },
                 on : {
                     click : () => {
@@ -83,17 +80,22 @@ export default {
                 }
             },[value])
         },
+        createSvg(h,className) {
+            return h('i',{
+                staticClass : `iconfont ${className} number-input-svg-icon`
+            })
+        },
         createLabel(h,number,append,prepend) {
             if(number){
                 return h('div',{
-                    staticClass : "label append-box",
+                    staticClass : "number-input-label number-input-append-box",
                     class : {
-                        'disabled' : this.disabled
+                        'number-input-disabled' : this.disabled
                     }
                 },[h('span',{
-                    staticClass : 'label-span label-top',
+                    staticClass : 'number-input-label-span label-top',
                     class : {
-                        'disabled' : this.disabled
+                        'number-input-disabled' : this.disabled
                     },
                     on : {
                         click : () => {
@@ -102,10 +104,12 @@ export default {
                             this.updateValue(value);
                         }
                     }
-                },[createSvg(h,'M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z')]),h('span',{
-                    staticClass : 'label-span label-bottom',
+                },[
+                    this.createSvg(h,'icon-icon_arrow_up')
+                ]),h('span',{
+                    staticClass : 'number-input-label-span label-bottom',
                     class : {
-                        'disabled' : this.disabled
+                        'number-input-disabled' : this.disabled
                     },
                     on : {
                         click : () => {
@@ -114,21 +118,23 @@ export default {
                             this.updateValue(value);
                         }
                     }
-                },[createSvg(h,'M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z')])])
+                },[
+                    this.createSvg(h,'icon-icon_arrow_down')
+                ])])
             }
             if(append){
                 return h('div',{
-                    staticClass : "label append-box",
+                    staticClass : "number-input-label number-input-append-box",
                     class : {
-                        'disabled': this.disabled
+                        'number-input-disabled': this.disabled
                     }
                 },[append])
             }
             if(prepend){
                 return h('div',{
-                    staticClass : 'label prepend-box',
+                    staticClass : 'number-input-label number-input-prepend-box',
                     class : {
-                        'disabled' : this.disabled
+                        'number-input-disabled' : this.disabled
                     }
                 },[prepend])
             }
@@ -145,9 +151,9 @@ export default {
             },
             staticClass : "number-input",
             class : {
-                'append' : this.append || this.number,
-                'prepend' : this.normal || this.prepend,
-                'disabled' : this.disabled
+                'number-input-append' : this.append || this.number,
+                'number-input-prepend' : this.normal || this.prepend,
+                'number-input-disabled' : this.disabled
             },
             on : {
                 input : (e) => {
@@ -167,7 +173,7 @@ export default {
             }
         });
         return h('div',{
-            staticClass : 'number-box'
+            staticClass : 'number-input-box'
         },[
             this.normal ? this.createNormal(h,'-') : '',
             this.normal ? this.createNormal(h,'+') : '',

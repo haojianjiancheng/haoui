@@ -1,6 +1,6 @@
-export function createSvg (h,path) {
+export function createSvg (h,path,className) {
     return h('svg',{
-        staticClass : 'svg-icon',
+        staticClass : className,
         attrs : {
             viewBox : '0 0 24 24',
         }
