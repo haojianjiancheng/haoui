@@ -29,7 +29,7 @@
                 <td>{{item.address}}</td>
             </tr>
         </table>
-       
+       <checkbox disabled></checkbox>
         <hao-switch v-model="check" value='vue' label-right='22' label-left='22'></hao-switch>
         {{check}}
     </div>

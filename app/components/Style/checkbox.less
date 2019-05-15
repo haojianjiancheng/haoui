@@ -1,9 +1,16 @@
 @checked_bc : #2196f3;
 @check_box_width : 14px;
+@check_box_disabled : gray;
 
 .hao-check-box{
     display: inline-block;
     cursor: pointer;
+}
+.checkbox-disabled{
+    cursor: not-allowed;
+    .hao-check-input{
+        color: @check_box_disabled;
+    }
 }
 .hao-check-input{
     display: inline-block;

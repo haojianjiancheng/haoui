@@ -90,6 +90,14 @@
     - [x] tag
     - [x] name
     - [x] timeout
+* switch
+    - [x] value
+    - [x] labelLeft
+    - [x] labelRight
+    - [x] disabled
+* checkbox
+    - [x] value
+    - [x] label
 * minix
     * haoinput
         - [x] type
@@ -182,7 +190,7 @@
 ### paging
 * props
 
-     参数 | 作用 | 类型 | 可选值 | 默认值
+    参数 | 作用 | 类型 | 可选值 | 默认值
     --- | --- | --- | :---: | :---:  
     small | 小按钮 | Boolean | - | false
     fab | 浮动（阴影）| Boolean | - | false
@@ -201,7 +209,7 @@
 ### numberInput
 * props
 
-     参数 | 作用 | 类型 | 可选值 | 默认值
+    参数 | 作用 | 类型 | 可选值 | 默认值
     --- | --- | --- | :---: | :---: 
     min | 最小数（可以是负数、小数） | Number | - | - 
     max | 最大数（可以是负数、小数） | Number | - | - 
@@ -219,7 +227,7 @@
 ### lazyModular
 * props 
 
-     参数 | 作用 | 类型 | 可选值 | 默认值
+    参数 | 作用 | 类型 | 可选值 | 默认值
     --- | --- | --- | :---: | :---: 
     view | 相对视口 | HTMLElement | - | null
     threshold | 懒加载阈值 | String | - | 0px
@@ -265,3 +273,19 @@ components : {
     },
 },
 ```
+### switch
+* props 
+
+    参数 | 作用 | 类型 | 可选值 | 默认值
+    --- | --- | --- | :---: | :---: 
+    labeLeft | 左按钮提示 | String | - | -
+    labelRight | 右按钮提示 | String | - | -
+    disabled | 禁用 | Boolean | false
+
+### checkbox
+* props 
+
+    参数 | 作用 | 类型 | 可选值 | 默认值
+    --- | --- | --- | :---: | :---: 
+    label | 提示 | String | - | -
+    disabled | 禁用 | Boolean | - | false

@@ -4,14 +4,19 @@ export default {
     name : 'hao-checkbox',
     props : {
         label : String,
+        disabled : Boolean,
     },
     mixins : [select()],
     render(h) {
         return h('div',{
             staticClass : 'hao-check-box',
+            class : {
+                'checkbox-disabled' : this.disabled
+            },
             on : {
                 click : (e) => {
                     e.stopPropagation();
+                    if(this.disabled) return;
                     this.toggle();
                     this.$emit('click',!this.checked)
                 },
