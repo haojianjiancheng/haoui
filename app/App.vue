@@ -29,27 +29,27 @@
                 <td>{{item.address}}</td>
             </tr>
         </table>
-        <checkbox value='react' v-model="check"></checkbox>
-        <checkbox value='angluar' v-model="check"></checkbox>
-        <checkbox value='vue' v-model="check"></checkbox>{{check}}
-        <input type="checkbox" id="a">
-        <label for="a">33</label>
+       
+        <hao-switch v-model="check" value='vue' label-right='22' label-left='22'></hao-switch>
+        {{check}}
     </div>
 </template>
 
 <script>
     import haoTable from './components/table';
     import checkbox from './components/checkbox';
-    import haoButton from './components/Button'
+    import haoButton from './components/Button';
+    import haoSwitch from './components/Switch';
     export default {
         components : {
             checkbox,
             haoButton,
-            haoTable
+            haoTable,
+            haoSwitch
         },
         data() {
             return {
-                check : [],
+                check : false,
                 all: false,
                 aa:[],
                 list: [{

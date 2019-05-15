@@ -1,7 +1,8 @@
-import Switch from './switch.js';
+import haoSwitch from './switch.js';
+import '../Style/switch.less';
 
-Switch.install = function(Vue){
-    Vue.use(Switch.name,Switch)
+haoSwitch.install = function(Vue){
+    Vue.use(haoSwitch.name,haoSwitch)
 };
 
-export default Switch;
+export default haoSwitch;

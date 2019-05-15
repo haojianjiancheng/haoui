@@ -1,0 +1,60 @@
+@switch_width : 50px;
+@switch_height : 24px;
+@switch_bc : red;
+@switch_select_bc : blue;
+@switch_ball_bc : #fff;
+@switch_disabled_color : gray;
+@label_select_color : blue;
+@move : @switch_width - @switch_height;
+
+.switch-box{
+    cursor: pointer;
+    width: max-content;
+    .switch_label:first-child{
+        margin-right: 3px;
+    }
+    .switch_label:last-child{
+        margin-left: 3px;
+    }
+}
+.switch-disabled{
+    cursor: not-allowed;
+    .switch_label{
+        color: @switch_disabled_color;
+    }
+    .hao-switch{
+        background-color: @switch_disabled_color;
+        .hao-switch-ball{
+            border-color: @switch_disabled_color;
+        }
+    }
+}
+.hao-switch{
+    position: relative;
+    display: inline-block;
+    vertical-align: text-bottom;
+    width: @switch_width;
+    height: @switch_height;
+    border-radius: @switch_height / 2;
+    background-color: @switch_bc;
+}
+.hao-switch-ball{
+    position: absolute;
+    transition: transform .4s;
+    width: @switch_height;
+    height: @switch_height;
+    border: 2px solid @switch_bc;
+    box-sizing: border-box;
+    border-radius: @switch_height / 2;
+    background-color: @switch_ball_bc;
+}
+.is-selected{
+    background-color: @switch_select_bc;
+    .hao-switch-ball{
+        transform: translateX(@move);
+        border-color: @switch_select_bc;
+    }
+}
+.switch_label-selected{
+    color: @label_select_color;
+}
