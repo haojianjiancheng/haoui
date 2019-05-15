@@ -7,7 +7,7 @@
 
         <haoTable :list='list'>
         </haoTable>
-        <checkbox v-model="all" @click="changeAll"></checkbox>
+        <checkbox v-model="all" @click="changeAll" :label="'全选'"></checkbox>
         <table>
             
             <tr v-for="(item,index) in list" :key='index' @click.stop="change(item.id)">
@@ -18,7 +18,7 @@
                 <td>{{item.name}}</td>
                 <td>{{item.address}}</td>
                 <td>
-                    <haoButton small @click="delet(item)">删除</haoButton>
+                    <haoButton small @click.stop="delet(item)">删除</haoButton>
                 </td>
             </tr>
         </table>{{aa}}
@@ -80,7 +80,8 @@
         },
         methods: {
            delet(val){
-               this.list.splice(this.list.indexOf(val),1)
+                this.list.splice(this.list.indexOf(val),1);
+                this.aa.includes(val.id) && this.aa.splice(this.aa.indexOf(val.id),1);
            },
             change(i){
                 this.aa.includes(i) ? this.aa.splice(this.aa.indexOf(i),1) : this.aa.push(i);

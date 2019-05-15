@@ -32,17 +32,17 @@ export default {
     },
     render(h) {
         return h('div',{
-            staticClass : '',
+            staticClass : 'hao-check-box',
+            on : {
+                click : (e) => {
+                    e.stopPropagation();
+                    this.toggle();
+                    this.$emit('click',!this.checked)
+                },
+            }
         },[
             h('span',{
-                staticClass : 'hao-check-box',
-                on : {
-                    click : (e) => {
-                        e.stopPropagation();
-                        this.toggle();
-                        this.$emit('click',!this.checked)
-                    },
-                }
+                staticClass : 'hao-check-input',
             },[
                 h('span',{
                     staticClass : 'iconfont',
@@ -61,8 +61,11 @@ export default {
                     }
                 })
             ]),
-            h('span',{
-
+            this.label && h('span',{
+                staticClass : 'hao-check-label',
+                class : {
+                    'is-check' : this.checked
+                }
             },[
                 this.label
             ])
