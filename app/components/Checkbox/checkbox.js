@@ -30,7 +30,7 @@ export default {
                     class : {
                         'icon-check' : this.checked,
                         'icon-checkbox' : !this.checked,
-                        'is-check' : this.checked
+                        'hao-check-is-check' : this.checked
                     }
                 }),
                 h('input',{

@@ -35,7 +35,7 @@ export default {
     },
     methods : {
         updateValue(value) {
-            if(value === '' | value === null) return;
+            if(value === '' || value === null) return;
             if(isNaN(value)) return;
             if(value < this.min) value = this.min;
             if(value > this.max) value = this.max;

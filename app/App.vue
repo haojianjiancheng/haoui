@@ -31,24 +31,29 @@
         </table>
        <checkbox disabled></checkbox>
         <hao-switch v-model="check" value='vue' label-right='22' label-left='22'></hao-switch>
-        <number-input number v-model="number"></number-input>
+        <paging total='100' :current.sync='number'></paging>{{number}}
+        <icon value='icon-icon_bell'></icon>
         {{check}}
     </div>
 </template>
 
 <script>
     import haoTable from './components/table';
+    import icon from './components/Icon';
     import checkbox from './components/checkbox';
     import haoButton from './components/Button';
     import haoSwitch from './components/Switch';
-    import numberInput from './components/NumberInput'
+    import numberInput from './components/NumberInput';
+    import paging from './components/Paging';
     export default {
         components : {
+            icon,
             checkbox,
             haoButton,
             haoTable,
             haoSwitch,
-            numberInput
+            numberInput,
+            paging
         },
         data() {
             return {

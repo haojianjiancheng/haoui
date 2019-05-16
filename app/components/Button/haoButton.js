@@ -51,7 +51,7 @@ export default {
         },
         createLoading(h) {
             let loading = h('div',{
-                staticClass : 'loading-box'
+                staticClass : 'button-loading-box'
             },[
                 h('div',{
                     staticClass : 'button-loading'

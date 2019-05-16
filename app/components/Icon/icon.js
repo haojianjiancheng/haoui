@@ -7,10 +7,7 @@ export default {
     render(h,{ props }) {
         if (!props.value) return;
         return h('i',{
-            domProps : {
-                innerHTML : props.value
-            },
-            staticClass : 'iconfont'
+            staticClass : `iconfont ${props.value}`
         })
     }
 }

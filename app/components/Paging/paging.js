@@ -1,26 +1,23 @@
-import { createSvg } from '../minix/unit.js'
-
 export default {
     name : 'paging',
     data() {
         return {
             jump : {
                 '>' : {
+                    className : 'icon-icon_arrow_right',
                     step : 1,
-                    path : 'M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z'
                 },
                 "<" : {
+                    className : 'icon-icon_arrow_left',
                     step : -1,
-                    path : 'M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z'
                 },
                 "a" : {
+                    className : 'icon-ellipsis',
                     step : -3,
-                    path : 'M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z'
-
                 },
                 'z' : {
+                    className : 'icon-ellipsis',
                     step : 3,
-                    path : 'M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z'
                 }
             }
         }
@@ -46,7 +43,8 @@ export default {
             type : [Number,String],
             validator : function(value){
                 return /^\d+$/.test(value)
-            }
+            },
+            required : true
         },
         pageSize : {
             type : [Number,String],
@@ -59,7 +57,8 @@ export default {
             type : [Number,String],
             validator : function(value){
                 return /^\d+$/.test(value)
-            }
+            },
+            required : true,
         },
         butNum : {
             type : [Number,String],
@@ -97,6 +96,11 @@ export default {
         }
     },
     methods : {
+        createSvg(h,num) {
+            return h('i',{
+                staticClass : `iconfont ${this.jump[num].className} number-input-svg-icon`
+            })
+        },
         changePage(num) {
             let value = /^\d+$/.test(num) ? num : this.current+this.jump[num].step;
             if(value<1 || value>this.totalBut) return
@@ -104,7 +108,7 @@ export default {
             this.$emit('change',value);
         },
         createPage(h,num) {
-            let value = /^\d+$/.test(num) ? num : createSvg(h,this.jump[num].path);
+            let value = /^\d+$/.test(num) ? num : this.createSvg(h,num);
             let disabled ; 
             if(num === '>'){
                 disabled = this.current >= this.totalBut ? true : false
@@ -116,7 +120,7 @@ export default {
                 staticClass : "paging-num",
                 class : {
                     'is-current' : this.current === num,
-                    'disabled' : disabled,
+                    'paging-disabled' : disabled,
                     'paging-num-small' : this.small,
                     'paging-num-fab' : this.fab,
                     'paging-num-flat' : this.flat,
