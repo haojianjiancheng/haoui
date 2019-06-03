@@ -41,8 +41,8 @@ const config = {
                 test : /\.less/,
                 use : [
                     "css-loader",
-                    "less-loader",
-                    "postcss-loader"
+                    "postcss-loader",
+                    "less-loader"
                 ]
             },
             {

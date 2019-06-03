@@ -11,7 +11,8 @@
   "author": "haojianjiancheng",
   "license": "ISC",
   "dependencies": {
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vuedraggable": "^2.21.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
