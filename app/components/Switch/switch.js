@@ -25,6 +25,7 @@ export default {
                 'switch-disabled' : this.disabled
             },
             on : {
+                ...this.$listeners,
                 click : () => {
                     if(this.disabled) return;
                     this.toggle()

@@ -117,6 +117,12 @@ export default {
             class : {
                 "form-item-error" : !!this.error,
                 "form-item-top" : this.labelPosition === 'top',
+            },
+            on : {
+                click: ()=>{
+                    console.log(1);
+                    
+                }
             }
         },[
             this.createLabel(h),

@@ -5,10 +5,10 @@
                 <form-item :prop="'name'" :rules='rule' :label="'name'" :labelPosition="'left'">
                     <hao-input v-model="regObject.name"></hao-input>
                 </form-item>
-                <form-item prop='isok'>
+                <form-item prop='isok' label='滑块' labelPosition='left'>
                     <hao-switch></hao-switch>
                 </form-item>
-                <form-item prop='istrue'>
+                <form-item prop='istrue' label='选择框' labelPosition='left'>
                     <checkbox></checkbox>
                 </form-item>
             </hao-form>
