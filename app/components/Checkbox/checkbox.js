@@ -7,6 +7,11 @@ export default {
         disabled : Boolean,
     },
     mixins : [select()],
+    inject : {
+        formItem : {
+            default : ''
+        }
+    },
     render(h) {
         return h('div',{
             staticClass : 'hao-check-box',
@@ -18,7 +23,7 @@ export default {
                     e.stopPropagation();
                     if(this.disabled) return;
                     this.toggle();
-                    this.$emit('click',!this.checked)
+                    this.formItem && this.formItem.onBlur()
                 },
             }
         },[

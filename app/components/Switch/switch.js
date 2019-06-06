@@ -8,6 +8,11 @@ export default {
         disabled : Boolean
     },
     mixins : [select()],
+    inject : {
+        formItem : {
+            default : ''
+        }
+    },
     methods : {
         createLabel(h,labelMes,select) {
             return  h('span',{
@@ -29,6 +34,7 @@ export default {
                 click : () => {
                     if(this.disabled) return;
                     this.toggle()
+                    this.formItem && this.formItem.onBlur()
                 }
             }
         },[

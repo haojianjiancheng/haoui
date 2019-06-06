@@ -5,12 +5,14 @@
                 <form-item :prop="'name'" :rules='rule' :label="'name'" :labelPosition="'left'">
                     <hao-input v-model="regObject.name"></hao-input>
                 </form-item>
-                <form-item prop='isok' label='滑块' labelPosition='left'>
-                    <hao-switch></hao-switch>
+                <form-item prop='haoSwitch' :rules='switchRule' label='滑块' labelPosition='left'>
+                    <hao-switch v-model="regObject.haoSwitch" value='app'></hao-switch>
+                    {{regObject.haoSwitch}}
                 </form-item>
-                <form-item prop='istrue' label='选择框' labelPosition='left'>
-                    <checkbox></checkbox>
+                <form-item prop='check' :rules='checkRule' label='选择框' labelPosition='left'>
+                    <checkbox v-model="regObject.check" value='vue'></checkbox>
                 </form-item>
+                
             </hao-form>
             <hao-button @click="validated">验证</hao-button>
             <hao-button @click="clean">清空</hao-button>
@@ -37,12 +39,26 @@
         data() {
             return {
                 regObject : {
-                    name : ''
+                    name : '',
+                    check : [],
+                    haoSwitch : false,
                 },
                 rule : [
                     {
                         validate : (item,prop)=> item.length>10,
                         message : "长度不够"
+                    }
+                ],
+                switchRule : [
+                    {
+                        validate : (item,prop) => item === true,
+                        message : '必须是true'
+                    }
+                ],
+                checkRule : [
+                    {
+                        validate : (item,prop) => item == 'vue',
+                        message : '只有vue'
                     }
                 ]
             }

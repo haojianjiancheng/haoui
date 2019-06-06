@@ -85,8 +85,6 @@ export default {
         },
         onBlur() {
             this.isFocuse = false;
-            console.log('onblur');
-            
             this.form.autoValidate && this.validate();
         },
         createLabel(h) {
