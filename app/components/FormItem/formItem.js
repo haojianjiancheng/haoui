@@ -47,17 +47,21 @@ export default {
             if(!this.rules || this.rules.length == 0) return true;
             let promise = [];
             let promiseMessage = [];
-            let validateResult = this.rules.some((item)=>{                
-                let result = item.validate(this.form.getVal(this.prop));
+            for (let i = 0; i < this.rules.length; i++) {
+                let rule = this.rules[i];
+                let result = rule.validate(this.form.getVal(this.prop));
                 if(typeof result.then === 'function'){
                     promise.push(result);
-                    promiseMessage.push(item.message);
+                    promiseMessage.push(rule.message);
+                    continue
+                }
+                if(result){
+                    this.updateError('')
+                }else{
+                    this.updateError(rule.message);
                     return false
                 }
-                result || this.updateError(item.message);
-                return !result
-            },this);
-            if(promise.length === 0) return !validateResult
+            }
             if(promise.length > 0){        
                 return Promise.all(promise).then((result)=>{           
                     for (let i = 0; i < result.length; i++) {
@@ -74,14 +78,16 @@ export default {
             return true;
         },
         updateError(value = "错误信息"){
-            this.error = value
+            this.error = value;
         },
         onFocuse() {
             this.isFocuse = true;                
         },
         onBlur() {
             this.isFocuse = false;
-            if(this.form.autoValidate) this.validate();
+            console.log('onblur');
+            
+            this.form.autoValidate && this.validate();
         },
         createLabel(h) {
             if(!this.label) return;
