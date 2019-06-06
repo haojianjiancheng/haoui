@@ -127,7 +127,11 @@ export default {
         },[
             this.createLabel(h),
             this.createIcon(h),
-            this.$scopedSlots.default(),
+            h('div',{
+                staticClass : 'form-item-content'
+            },[
+                this.$scopedSlots.default()
+            ]),
             (this.helpText || this.error) && this.createHelp(h),
         ])
     }
