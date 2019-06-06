@@ -5,6 +5,12 @@
                 <form-item :prop="'name'" :rules='rule' :label="'name'" :labelPosition="'left'">
                     <hao-input v-model="regObject.name"></hao-input>
                 </form-item>
+                <form-item prop='isok'>
+                    <hao-switch></hao-switch>
+                </form-item>
+                <form-item prop='istrue'>
+                    <checkbox></checkbox>
+                </form-item>
             </hao-form>
             <hao-button @click="validated">验证</hao-button>
             <hao-button @click="clean">清空</hao-button>
@@ -17,8 +23,12 @@
     import formItem from '../components/FormItem';
     import haoInput from '../components/minix/haoinput.vue';
     import haoButton from '../components/Button';
+    import haoSwitch from '../components/Switch';
+     import checkbox from '../components/checkbox';
     export default {
         components : {
+            checkbox,
+            haoSwitch,
             haoForm,
             formItem,
             haoInput,
