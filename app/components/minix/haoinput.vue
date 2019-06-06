@@ -57,6 +57,7 @@
 .hao-input{
     outline: none;
     border: 1px solid lightgray;
+    -webkit-tap-highlight-color:transparent;
     width: @input_width;
     height: @innput_height;
     border-radius: 4px;

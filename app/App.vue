@@ -21,6 +21,7 @@
                         <td>{{item.date}}</td>
                         <td>{{item.name}}</td>
                         <td>{{item.address}}</td>
+                        <td>{{item.id}}</td>
                         <td>
                             <haoButton small @click.stop="delet(item)">删除</haoButton>
                         </td>
@@ -31,6 +32,7 @@
                         <td>{{item.date}}</td>
                         <td>{{item.name}}</td>
                         <td>{{item.address}}</td>
+                        <td>{{item.id}}</td>
                     </tr>
                 </table>
             </div>
@@ -79,17 +81,17 @@
                     </div>
                 </step>
             </stepper>
-            <div class="a">
-                <div class="b">
-
-                </div>
-                <div class="c">
-
-                </div>
-                <div class="d">
-
-                </div>
-            </div>
+            
+           
+        </hao-row>
+        <hao-row>
+             <draggable v-model="list">
+                
+                    <div v-for="item in list" :key='item.id'>
+                        {{item}}
+                    </div>
+                
+            </draggable>
         </hao-row>
     </hao-container>
 </template>
@@ -103,9 +105,11 @@
     import numberInput from './components/NumberInput';
     import paging from './components/Paging';
     import {stepper,step} from './components/Stepper';
+    import draggable from 'vuedraggable';
 
     export default {
         components : {
+            draggable,
             stepper,
             icon,
             checkbox,
@@ -190,13 +194,5 @@
         .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
         opacity: 0;
         }
-        .bb{
-            z-index: 999;
-        }
-        .aa{
-            width: 500px;
-            height: 500px;
-        }
-        
     }
 </style>
